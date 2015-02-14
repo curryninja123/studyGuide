@@ -4,7 +4,8 @@
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
 	</head>
-		<div class="container-fluid">
+	<body>
+		<div class = "container-fluid">
 			<nav class = "navbar navbar-fixed-top">
 				<div>
 					<ul class = "nav navbar-nav">
@@ -15,9 +16,7 @@
 					</ul>
 				</div>
 			</nav>
-			<div id = "welcome-info"></div>
-			<% if(loggedIn) {
-				document.getElementById('welcome-info').innerHTML = '<p>Welcome, <% user.firstname %></p>';
-			} %>
 		</div>
+		
+	</body>
 </html>

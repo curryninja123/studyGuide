@@ -4,8 +4,10 @@
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
 	</head>
-	<body>
-		<h1>Welcome Mr.<%= user.lastname %></h1>
-		<p>Your email is <%= user.email %></p>
-	</body>
+		<div class="container-fluid">
+			<div id = "welcome-info"></div>
+			<% if(loggedIn) {
+				document.getElementById('welcome-info').innerHTML = '<p>Welcome, <% user.firstname %></p>';
+			} %>
+		</div>
 </html>

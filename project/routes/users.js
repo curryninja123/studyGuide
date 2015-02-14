@@ -73,7 +73,7 @@ router.get('/signup', function(req, res) {
 
 router.post('/new', function(req, res) {
 	console.log(res.body);
-	userz.register(req, res, {});
+	userz.register(req, res, {successPath: '/sessions/welcome'});
 });
 
 router.get('/login', function(req, res) {

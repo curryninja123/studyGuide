@@ -5,6 +5,16 @@
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
 	</head>
 		<div class="container-fluid">
+			<nav class = "navbar navbar-fixed-top">
+				<div>
+					<ul class = "nav navbar-nav">
+						<li><a href = "index.ejs">Home</a></li>
+						<li><a href = "welcome.ejs">Welcome</a></li>
+						<li><a href = "login.ejs">Login</a></li>
+						<li><a href = "#">Sign Up</a></li>
+					</ul>
+				</div>
+			</nav>
 			<div id = "welcome-info"></div>
 			<% if(loggedIn) {
 				document.getElementById('welcome-info').innerHTML = '<p>Welcome, <% user.firstname %></p>';

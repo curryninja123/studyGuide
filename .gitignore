@@ -1,0 +1,7 @@
+*~
+*.swp
+*.bin
+*bin/
+db/*
+*.DS_Store
+

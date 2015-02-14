@@ -157,7 +157,7 @@ exports.verify = function(req, res, next) {
 	}
 	else {
 		req.flash("error", 'You must be logged in to access this page');
-		res.redirect("/users/login");
+		res.redirect("/sessions/login");
 	}
 }
 

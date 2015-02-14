@@ -6,12 +6,12 @@ var formulaSchema = new Schema({
 	examples: String,
 	proofs: String,
 	history: String,
-	tag: String,
+	tags: [String],
 	practice: String
 });
 
 var subjectSchema = new Schema({
-	name: String,
+	name: {type: String, unique: true},
 	formula: [Schema.Types.ObjectId],
 	tags: [String]
 });
@@ -21,6 +21,6 @@ var groupSchema = new Schema({
 	articles: [Schema.Types.ObjectId]
 });
 
-var Formula = mongoose.model('Formula', formulaSchema);
-var Subject = mongoose.model('Subject', subjectSchema);
-var Group = mongoose.model('Group', groupSchema);
+exports.Formula = mongoose.model('Formula', formulaSchema);
+exports.Subject = mongoose.model('Subject', subjectSchema);
+exports.Group = mongoose.model('Group', groupSchema);

@@ -40,8 +40,38 @@ a.esp {
 	font-size: 1.25em;
 	text-align:center;
 }
+
 a.esp:hover {
 	text-decoration: none;
 	background: #f4d422;
 }
-.
+
+a.esp2 {
+	display: block;
+	margin: 0px;
+	padding: 8px 1em;
+	width: 100%;
+	background: #00dd00;
+	font-size: 1.25em;
+	text-align:center;
+}
+
+a.esp2:hover {
+	text-decoration: none;
+	background: #22ff22;
+}
+
+a.esp3 {
+	display: block;
+	margin: 0px;
+	padding: 8px 1em;
+	width: 100%;
+	background: #dd0000;
+	font-size: 1.25em;
+	text-align:center;
+}
+
+a.esp2:hover {
+	text-decoration: none;
+	background: #ff2222;
+}

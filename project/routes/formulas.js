@@ -60,15 +60,48 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 			res.render('error', {title: 'Error'});
 		}
 		else {
-			res.redirect('/formula/view/' + result.id.toString());
 			subjects = req.body.subjects;
-			if (subjects) {
+			console.log(req.body.subjects);
+			console.log(result.id);
+			if (subjects && typeof(subjects) == "string") {
+				structs.Subject.findOneAndUpdate({name: subjects}, {
+					$push: {formulas: result.id},
+				}).exec(function(err, numModified) {
+					if (err) {console.log(err);} 
+					else {console.log("Success " + numModified);}
+				});
+			}
+			else if (subjects) {
 				for (var i = 0; i < subjects.length; i++) {
-					structs.Subject.update({name: subjects[i]}, {
+					console.log(i);
+					structs.Subject.findOneAndUpdate({name: subjects[i]}, {
 						$push: {formulas: result.id},
+					}).exec(function(err, numModified) {
+						if (err) {console.log(err);} 
+						else {console.log("Success " + numModified);}
 					});
 				}
 			}
+			res.redirect('/formula/view/' + result.id.toString());
+		}
+	});
+});
+
+router.get('/categories/', function(req, res) {
+	structs.find().populate('subjects').exec(function(err, result) {
+		res.render('formula/displayCategories', {title: "Categories", categories: result});
+	});
+});
+
+router.get('/subject/:name', function(req, res) {
+	structs.Subject.findOne({name: req.params.name}).populate('formulas').exec(function(err, result) {
+		if (err || !result) {
+			console.log(err);
+			res.render('Error', {message: "Error", error: {status: "500", stack: "Denied"}});
+		}
+		else {
+			console.log(result);
+			res.render('formula/subjectListing', {title: result.name, subject: result});
 		}
 	});
 });

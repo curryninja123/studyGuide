@@ -13,23 +13,23 @@ var formulaSchema = new Schema({
 
 var categorySchema = new Schema({
 	name: {type: String, unique: true},
-	subcategories: [Schema.Types.ObjectId],
-	subjects: [Schema.Types.ObjectId]
+	subcategories: [{type: Schema.Types.ObjectId, ref: 'Category'}],
+	subjects: [{type: Schema.Types.ObjectId, ref: 'Subject'}]
 });
 
 var subjectSchema = new Schema({
 	name: {type: String, unique: true},
-	formula: [Schema.Types.ObjectId],
+	formulas: [{type: Schema.Types.ObjectId, ref: 'Formula'}],
 	tags: [String]
 });
 
 var groupSchema = new Schema({
 	name: String,
-	users: [Schema.Types.ObjectId],
+	users: [{type: Schema.Types.ObjectId, ref: 'User'}],
 	articles: [Schema.Types.ObjectId],
 	messageBoard: [{
 		content: String,
-		sender: Schema.Types.ObjectId,
+		sender: {type: Schema.Types.ObjectId, ref: 'User'},
 		sent: Date
 	}]
 });

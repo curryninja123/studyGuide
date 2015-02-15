@@ -4,8 +4,8 @@ var userz = require('../models/userz.js');
 var structs = require('../models/structs.js');
 var mongoose = require('mongoose'), ObjectId = mongoose.Types.ObjectId;
 
-var JSONError = '{ error: true, message: "Unable to fulfill request" }'
-var JSONSuccess = '{ error: false, message: "Request fulfilled" }'
+var JSONError = '{ "error": true, "message": "Unable to fulfill request" }'
+var JSONSuccess = '{ "error": false, "message": "Request fulfilled" }'
 
 router.get('/', function(req, res) {
 	res.send("FORMULAS");
@@ -44,7 +44,24 @@ router.get('/display/:formulaId', function(req, res) {
 
 router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 	structs.Formula.findById(req.params.formulaId, function(err, result) {
-
+		if (err || !result || (req.session.user.addedFormulas && req.session.user.addedFormulas.indexOf(req.params.formulaId) > 0)) {
+			res.setHeader('Content-Type', 'application/json');
+			res.send(JSONError);
+		}
+		else {
+			console.log(req.session.user);
+			console.log(req.params.formulaId);
+			userz.User.findByIdAndUpdate(req.session.user.id, {
+				$addToSet: {
+					addedFormulas: req.params.formulaId,
+				}
+			}).exec(function(err, success) {
+				res.setHeader('Content-Type', 'application/json');
+				res.send(JSONSuccess);
+				console.log('Sent');
+				console.log(success);
+			});
+		}
 	});
 });
 
@@ -72,7 +89,7 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 			console.log(result.id);
 			if (subjects && typeof(subjects) == "string") {
 				structs.Subject.findOneAndUpdate({name: subjects}, {
-					$push: {formulas: result.id},
+					$addToSet: {formulas: ObjectId(result.id)},
 				}).exec(function(err, numModified) {
 					if (err) {console.log(err);} 
 					else {console.log("Success " + numModified);}

@@ -6,3 +6,28 @@ function buttonClick(n) {
 		}
 	}
 }
+
+function addToProfile(formulaId) {
+	console.log(formulaId);
+	// $.post({
+	// 	// url: '/formula/profile/add/' + formulaId,
+	// 	url: null,
+	// 	success: function(result) {
+	// 		console.log('hey');
+	// 		$('#bottom-alerts').append($.parseHTML(
+	// 			'<div class="alert alert-success">Added To Your Profile</div>'
+	// 		));
+	// 		console.log(result);
+	// 	}
+	// });
+
+	$.post('/formula/profile/add/' + formulaId, {}, function(result) {
+		console.log('hey');
+		$('#bottom-alerts').append($.parseHTML(
+			'<div class="alert alert-success">Added To Your Profile</div>'
+		));
+		console.log(result);
+	}, 'json');
+
+	return false;
+}

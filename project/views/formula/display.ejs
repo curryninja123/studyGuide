@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
 	<head>
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
@@ -28,16 +27,14 @@
 						<li><a href = "/">Home</a></li>
 						<li><a href = "/sessions/welcome">Start</a></li>
 						<% if (!loggedIn) { %>
-=======
-    <head>
-        <meta charset = "utf-8">
-        <link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
-        <link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
-        <script src="/javascripts/display.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
-    </head>
-    <body>
+                            <li><a href = "/sessions/login">Login</a></li>
+                            <li><a href = "/sessions/signup">Sign Up</a></li>
+                        <% } else { %>
+                            <li><a href = "/sessions/logout">Log Out</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
         <div class = "container-fluid">
             <nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
                 <div>
@@ -45,7 +42,6 @@
                         <li><a href = "/">Home</a></li>
                         <li><a href = "/sessions/welcome">Welcome</a></li>
                         <% if (!loggedIn) { %>
->>>>>>> 60532e115b60f6ae8c95f28d77434a021b79a82b
                             <li><a href = "/sessions/login">Login</a></li>
                             <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
@@ -100,12 +96,9 @@
                 </div>
                 <div class = "col-md-2"></div>
             </div>
-<<<<<<< HEAD
             <br>
 		</div>
 	</body>
-=======
         </div>
     </body>
->>>>>>> 60532e115b60f6ae8c95f28d77434a021b79a82b
 </html>

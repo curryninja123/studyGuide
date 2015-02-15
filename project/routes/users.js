@@ -88,11 +88,11 @@ router.post('/session/new', function(req, res) {
 	userz.authenticate(params.email, params.password, function(user) {
 		if (!user) {
 			req.flash('error', 'Invalid Credentials');
-			res.redirect('/users/login');
+			res.redirect('/sessions/login');
 		}
 		else {
 			req.session.user = user;
-			res.redirect('/users/welcome');
+			res.redirect('/sessions/welcome');
 		}
 	});
 });

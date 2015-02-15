@@ -15,12 +15,8 @@
 					<ul class = "nav navbar-nav">
 						<li><a href = "/">Home</a></li>
 						<li><a href = "/sessions/welcome">Welcome</a></li>
-						<% if (!loggedIn) { %>
-							<li><a href = "/sessions/login">Login</a></li>
-							<li><a href = "/sessions/signup">Sign Up</a></li>
-						<% } else { %>
-							<li><a href = "/sessions/logout">Log Out</a></li>
-						<% } %>
+						<li><a href = "/sessions/login">Login</a></li>
+						<li><a href = "/sessions/signup">Sign Up</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -50,15 +46,17 @@
                             <label for = "practice">Practice</label>
                             <textarea class = "form-control" id = "practice" name = "practice" rows="10"></textarea>
                         </div>
-                       
+                       	
+                       	<div class="form-group">
                         <% for (var i = 0; i < subjects.length; i++) { %>
 	                        <div class="checkbox">
 	                        	<label>
-									<input type="checkbox" name=<%= subjects[i].name %>/>
+									<input type="checkbox" name="subjects" value=<%= subjects[i].name %>/>
 									<%= subjects[i].name %>
 	                        	</label>
                         	</div>
                         <% } %>
+                        </div>
 
                     
                         <button type = "submit" class = "btn btn-primary">Create Formula</button>

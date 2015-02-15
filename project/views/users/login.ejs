@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href =  "/stylesheets/bootstrap.css">
 	</head>
 	<body>
+        <br>
+        <br>
 		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top">
+			<nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
 				<div>
 					<ul class = "nav navbar-nav">
 						<li><a href = "/">Home</a></li>
@@ -16,22 +17,24 @@
 					</ul>
 				</div>
 			</nav>
-<<<<<<< HEAD
 			<br>
-			<form>
-=======
-			<form method="post" action="/sessions/session/new">
->>>>>>> 04ce38ad64830a02c4f6ae0bb0f223f152075526
-				<div class="form-group">
-					<label for = "email">Email Address</label>
-					<input type = "text" class = "form-control" id = "emailAddress" name = "email" placeholder = "Enter your email here">
-				</div>
-				<div class = "form-group">
-					<label for = "password">Password</label>
-					<input type = "password" class = "form-control" id = "password" name = "password" placeholder = "Enter your password here">
-				</div>
-				<button type = "submit" class = "btn btn-primary">Sign Up</button>
-			</form>
+            <div class = "row">
+                <div class = "col-md-2"></div>
+                <div class = "col-md-8">
+                    <form method="post" action="/sessions/session/new">
+                        <div class="form-group">
+                            <label for = "email">Email Address</label>
+                            <input type = "text" class = "form-control" id = "emailAddress" name = "email" placeholder = "Enter your email here">
+                        </div>
+                        <div class = "form-group">
+                            <label for = "password">Password</label>
+                            <input type = "password" class = "form-control" id = "password" name = "password" placeholder = "Enter your password here">
+                        </div>
+                        <button type = "submit" class = "btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+                <div class = "col-md-2"></div>
+            </div>
 		</div>
 	</body>
 </html>

@@ -43,7 +43,7 @@ router.get('/display/:formulaId', function(req, res) {
 });
 
 router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
-	structr.Formula.findById(req.params.formulaId, function(err, result) {
+	structs.Formula.findById(req.params.formulaId, function(err, result) {
 
 	});
 });

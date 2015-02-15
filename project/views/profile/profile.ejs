@@ -33,11 +33,11 @@
                 <div class = "col-md-8">
                     <p>
                         <b>Email: </b><%= user.email %>
-                        <b>Age: </b><%= user.age %>
-                        <b>Grade: </b><%= user.grade %>
-                        <div class = "page-header">About Me</div>
-                        <%= user.about %>
                     </p>
+                    <div class="page-header"><h3>My Formulas</h3></div>
+                    <% for (var i = 0; i < user.addedFormulas.length; i++) { %>
+                        <a href="/formula/display/<%= user.addedFormulas[i].id %>"><%= user.addedFormulas[i].title %></a>
+                    <% } %>
                 </div>
                 <div class = "col-md-2"></div>
             </div>

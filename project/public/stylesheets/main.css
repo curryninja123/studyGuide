@@ -32,6 +32,7 @@ h2.especial {
 
 a.esp {
 	display: block;
+	border: 1px solid #d2af00;
 	margin: 0px;
 	padding: 8px 1em;
 	width: 100%;

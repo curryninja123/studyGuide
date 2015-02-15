@@ -50,8 +50,9 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 		}
 		else {
 			console.log(req.session.user);
-			console.log(req.params.formulaId);
-			userz.User.findByIdAndUpdate(req.session.user.id, {
+			console.log('formula ' + req.params.formulaId);
+			console.log('user ' + req.session.user._id);
+			userz.User.findByIdAndUpdate(req.session.user._id, {
 				$addToSet: {
 					addedFormulas: req.params.formulaId,
 				}
@@ -65,7 +66,7 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 	});
 });
 
-router.post('/create', userz.verifyAdmin, function(req, res) {
+router.post('/create', userz.verify, function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	params = {
 		formula: req.body.formula,

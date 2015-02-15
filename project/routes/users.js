@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userz = require('../models/userz.js');
+var structs = require('../models/structs.js');
 var CryptoJS = require('crypto-js');
 
 function genSalt() {
@@ -98,7 +99,9 @@ router.post('/session/new', function(req, res) {
 });
 
 router.get('/welcome', userz.verify, function(req, res) {
-	res.render('users/welcome', {title: 'Welcome!', headerImage: '/images/mojave.jpg'});
+	structs.Category.find().populate('subjects').exec(function(err, result) {
+		res.render('users/welcome', {title: 'Welcome!', headerImage: '/images/mojave.jpg', categories: result});
+	});
 });
 
 router.get('/logout', function(req, res) {

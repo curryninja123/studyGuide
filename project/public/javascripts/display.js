@@ -22,11 +22,11 @@ function addToProfile(formulaId) {
 	// });
 
 	$.post('/formula/profile/add/' + formulaId, {}, function(result) {
-		console.log('hey');
-		$('#bottom-alerts').append($.parseHTML(
-			'<div class="alert alert-success">Added To Your Profile</div>'
-		));
-		console.log(result);
+		if (!result.error) {
+			$('#bottom-alerts').append($.parseHTML(
+				'<div class="alert alert-success">Added To Your Profile</div>'
+			));
+		}
 	}, 'json');
 
 	return false;

@@ -87,8 +87,8 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 	});
 });
 
-router.get('/categories/', function(req, res) {
-	structs.find().populate('subjects').exec(function(err, result) {
+router.get('/categories', function(req, res) {
+	structs.Category.find().populate('subjects').exec(function(err, result) {
 		res.render('formula/displayCategories', {title: "Categories", categories: result});
 	});
 });

@@ -33,7 +33,8 @@ var userSchema = new Schema({
 	hash: String,
 	salt: String,
 	isAdmin: {type: Boolean, default: false},
-	groups: [Schema.Types.ObjectId]
+	addedFormulas = [{type: Schema.Types.ObjectId, ref: 'Formula'}]
+	groups: [Schema.Types.ObjectId],
 });
 
 var User = mongoose.model('User', userSchema);

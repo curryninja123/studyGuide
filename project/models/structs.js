@@ -7,6 +7,7 @@ var formulaSchema = new Schema({
 	proofs: String,
 	title: String,
 	history: String,
+	variableDefinitions: String,
 	tags: [String],
 	practice: String
 });

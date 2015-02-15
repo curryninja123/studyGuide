@@ -9,7 +9,17 @@
 p#equation {
 	color: #0077bb;
 	display: block;
-	font-size: 2em;
+	font-size: 1.4em;
+	margin: 2em;
+	background: #f3fbfb;
+	padding: .5em 2em;
+	border-radius: 12px;
+}
+
+p#equationSmaller {
+	color: #0077bb;
+	display: block;
+	font-size: 1em;
 	margin: 2em;
 	background: #f3fbfb;
 	padding: .5em 2em;
@@ -18,5 +28,19 @@ p#equation {
 
 h2.especial {
 
+}
+
+a.esp {
+	display: block;
+	margin: 0px;
+	padding: 8px 1em;
+	width: 100%;
+	background: #f1c40f;
+	font-size: 1.25em;
+	text-align:center;
+}
+a.esp:hover {
+	text-decoration: none;
+	background: #f4d422;
 }
 .

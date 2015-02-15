@@ -42,6 +42,12 @@ router.get('/display/:formulaId', function(req, res) {
 	});
 });
 
+router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
+	structr.Formula.findById(req.params.formulaId, function(err, result) {
+
+	});
+});
+
 router.post('/create', userz.verifyAdmin, function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	params = {
@@ -50,6 +56,7 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 		proofs: req.body.proofs,
 		examples: req.body.examples,
 		history: req.body.history,
+		variableDefinitions: req.body.variableDefinitions,
 		tags: (req.body.tags || "general").split(" "),
 		practice: req.body.practice,
 	}
@@ -112,8 +119,10 @@ router.post('/update/:formulaId', userz.verifyAdmin, function(req, res) {
 		$set: {
 			formula: req.body.formula,
 			title: req.body.title,
+			examples: req.body.examples,
 			proofs: req.body.proofs,
 			history: req.body.history,
+			variableDefinitions: req.body.variableDefinitions,
 			tags: (req.body.tags || "general").split(" "),
 			practice: req.body.practice,
 		}

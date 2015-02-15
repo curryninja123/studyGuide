@@ -100,6 +100,7 @@ router.post('/session/new', function(req, res) {
 
 router.get('/welcome', userz.verify, function(req, res) {
 	structs.Category.find().populate('subjects').exec(function(err, result) {
+		console.log()
 		res.render('users/welcome', {title: 'Welcome!', headerImage: '/images/mojave.jpg', categories: result});
 	});
 });

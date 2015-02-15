@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <meta charset = "utf-8">
-		<link rel = "stylesheet" type = "text/css" href =  "/stylesheets/bootstrap.css">
-	</head>
-	<body  style = "background-color:#42647f">
+        <link rel = "stylesheet" type = "text/css" href =  "/stylesheets/bootstrap.css">
+    </head>
+    <body  style = "background-color:#42647f">
         <br>
         <br>
-		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-				<div>
-					<ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-						<li><a href = "/">Home</a></li>
-						<li><a href = "/sessions/welcome">Start</a></li>
-						<% if (!loggedIn) { %>
+        <div class = "container-fluid">
+            <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
+                <div>
+                    <ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
+                        <li><a href = "/">Home</a></li>
+                        <li><a href = "/sessions/welcome">Start</a></li>
+                        <% if (!loggedIn) { %>
                             <li><a href = "/sessions/login">Login</a></li>
                             <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
                             <li><a href = "/sessions/logout">Log Out</a></li>
                         <% } %>
-					</ul>
-				</div>
-			</nav>
+                    </ul>
+                </div>
+            </nav>
 			<br>
             <div class = "row">
                 <div class = "col-md-2"></div>

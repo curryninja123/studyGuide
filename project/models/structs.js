@@ -26,8 +26,9 @@ var subjectSchema = new Schema({
 
 var groupSchema = new Schema({
 	name: String,
+	password: String,
 	users: [{type: Schema.Types.ObjectId, ref: 'User'}],
-	articles: [Schema.Types.ObjectId],
+	articles: [String],
 	messageBoard: [{
 		content: String,
 		sender: {type: Schema.Types.ObjectId, ref: 'User'},

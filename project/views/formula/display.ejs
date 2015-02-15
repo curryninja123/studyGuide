@@ -36,16 +36,16 @@
                 </div>
             </nav>
         <div class = "container-fluid">
-            <nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
+            <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
                 <div>
                     <ul class = "nav navbar-nav">
-                        <li><a href = "/">Home</a></li>
-                        <li><a href = "/sessions/welcome">Welcome</a></li>
+                        <li><a href = "/"><b>Home</b></a></li>
+                        <li><a href = "/sessions/welcome"><b>Welcome</b></a></li>
                         <% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
+                            <li><a href = "/sessions/login"><b>Login</b></a></li>
+                            <li><a href = "/sessions/signup"><b>Sign Up</b></a></li>
                         <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
+                            <li><a href = "/sessions/logout"><b>Log Out</b></a></li>
                         <% } %>
                     </ul>
                 </div>

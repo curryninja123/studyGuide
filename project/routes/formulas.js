@@ -23,6 +23,22 @@ router.get('/view/:formulaId', function(req, res) {
 	});
 });
 
+router.get('/make', userz.verify, function(req, res) {
+	res.render('formula/make', {title: 'Make Formula'})
+});
+
+router.get('/display/:formulaId', function(req, res) {
+	structs.Formula.findById(req.params.formulaId, function(err, formula) {
+		if (err) {
+			res.setHeader('Content-Type', 'application/json');
+			res.send(JSONError);
+		}
+		else {
+			res.render('formula/display', {title: 'View Formula', formula: formula});
+		}
+	});
+});
+
 router.post('/create', userz.verifyAdmin, function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	params = {

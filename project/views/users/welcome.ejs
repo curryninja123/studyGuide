@@ -15,9 +15,8 @@
 					</ul>
 				</div>
 			</nav>
-			<div id = "welcome-info"></div>
-			<% if(loggedIn) {
-				document.getElementById('welcome-info').innerHTML = '<p>Welcome, <% user.firstname %></p>';
-			} %>
+			<div id = "welcome-info" style="margin-top:6em"></div>
+			<h1>Welcome</h1>
+			<p>We would like to welcome you, <%= user.firstname %>, to our site</p>
 		</div>
 </html>

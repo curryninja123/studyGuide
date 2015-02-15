@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
+		<script src="/javascripts/display.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	</head>
+	<body>
+		<div class = "container-fluid">
+			<nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
+				<div>
+					<ul class = "nav navbar-nav">
+						<li><a href = "/">Home</a></li>
+						<li><a href = "/sessions/welcome">Welcome</a></li>
+						<li><a href = "/sessions/login">Login</a></li>
+						<li><a href = "/sessions/signup">Sign Up</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="minipage">
+				<h1><%= formula.title %></h1>
+				<p id="equation">$$<%= formula.formula %>$$</p>
+				<h2>History</h2>
+				<div id="history">
+					<%= formula.history %>
+				</div>
+				<h2>Examples</h2>
+				<div id="examples">
+					<%= formula.examples %>
+				</div>
+				<h2>Proofs</h2>
+				<div id="proofs">
+					<%= formula.proofs %>
+				</div>
+				<h2>Practice</h2>
+				<div id="practice">
+					<%= formula.practice %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

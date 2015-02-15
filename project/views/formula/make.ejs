@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
+		<script src="/javascripts/display.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	</head>
+	<body>
+		<div class = "container-fluid">
+			<nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
+				<div>
+					<ul class = "nav navbar-nav">
+						<li><a href = "/">Home</a></li>
+						<li><a href = "/sessions/welcome">Welcome</a></li>
+						<li><a href = "/sessions/login">Login</a></li>
+						<li><a href = "/sessions/signup">Sign Up</a></li>
+					</ul>
+				</div>
+			</nav>
+				<div style="margin-top: 6em"></div>
+               <form method="post" action="/formula/create">
+                        <div class ="form-group">
+                            <label for = "title">Title</label>
+                            <input type = "text" class = "form-control" id = "title" name = "title" placeholder = "Formula Title">
+                        </div>
+                        <div class ="form-group">
+                            <label for = "title">Formula Content</label>
+                            <input type = "text" class = "form-control" id = "formula" name = "formula" placeholder = "Enter Formula (LaTeX supported)">
+                        </div>
+						<div class ="form-group">
+                            <label for = "examples">Examples</label>
+                            <textarea class = "form-control" id = "examples" name = "examples" rows="10"></textarea>
+                        </div>
+                        <div class ="form-group">
+                            <label for = "proofs">Proofs</label>
+                            <textarea class = "form-control" id = "proofs" name = "proofs" rows="10"></textarea>
+                        </div>
+                        <div class ="form-group">
+                            <label for = "history">History</label>
+                            <textarea class = "form-control" id = "history" name = "history" rows="10"></textarea>
+                        </div>
+                        <div class ="form-group">
+                            <label for = "practice">Practice</label>
+                            <textarea class = "form-control" id = "practice" name = "practice" rows="10"></textarea>
+                        </div>
+                        <button type = "submit" class = "btn btn-primary">Create Formula</button>
+				</form>
+			</div>
+			<br/><br/>
+		</div>
+	</body>
+</html>

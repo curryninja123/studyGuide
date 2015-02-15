@@ -11,6 +11,12 @@ var formulaSchema = new Schema({
 	practice: String
 });
 
+var categorySchema = new Schema({
+	name: {type: String, unique: true},
+	subcategories: [Schema.Types.ObjectId],
+	subjects: [Schema.Types.ObjectId]
+});
+
 var subjectSchema = new Schema({
 	name: {type: String, unique: true},
 	formula: [Schema.Types.ObjectId],

@@ -8,11 +8,11 @@
         <br>
         <br>
 		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
+			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
 				<div>
-					<ul class = "nav navbar-nav">
+					<ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
 						<li><a href = "/">Home</a></li>
-						<li><a href = "/sessions/welcome">Welcome</a></li>
+						<li><a href = "/sessions/welcome">Start</a></li>
 						<% if (!loggedIn) { %>
                             <li><a href = "/sessions/login">Login</a></li>
                             <li><a href = "/sessions/signup">Sign Up</a></li>
@@ -28,7 +28,7 @@
                 <div class = "col-md-8">
                     <div class = "page-header"><h1>Log In</h1></div>
                     <% if (error_messages && error_messages.length > 0) { %>
-                       <div style="color:#FF0000"><b><i><%= error_messages %></i></b></div>
+                       <div class = "alert alert-danger"><b><%= error_messages %></b></div>
                        <br>
                     <% } %>
                     <form method="post" action="/sessions/session/new">

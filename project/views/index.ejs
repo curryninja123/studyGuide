@@ -18,6 +18,7 @@
                             <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
                             <li><a href = "/sessions/logout">Log Out</a></li>
+                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
                         <% } %>
 					</ul>
 				</div>
@@ -25,28 +26,78 @@
             <br>
             <br>
             <br>
-            <div class = "jumbotron">
-                <img src = "http://puu.sh/fWjrr/7dda64b5d6.png" class = "center-block" alt = "Principia" height = 250 width = 385>
-                <h1 align = center>
-                    <small><span>An interactive learning website for the future</span></small>
-                </h1>
+            <div class = "jumbotron" style = "background-color:#42647f">
+                <div class = "gumbo">
+                    <img src = "http://puu.sh/fWpDN/cabb1ec2ae.png" class = "center-block" alt = "Principia" height = 250 width = 385>
+                    <h1 style = "text-align:center">
+                        <small><span style = "color:#ddd">An interactive learning website for the future</span></small>
+                    </h1>
+                </div>
             </div>
             <div class = "row">
                 <div class = "col-md-2"></div>
+
                 <div class = "col-md-8" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
                     <div class = "page-header"><h1>About Our Website</h1></div>
                     <p>
                         Formulas litter our lives.  Everywhere we look, it’s <i>y = mx + b</i> this or <i>F = ma</i> that.  Don’t you think there should be some way to organize this?  To make better sense of our world, this website aims to consolidate math, science, and engineering study guides.  Here, you can treat yourself to more than just formulas.  Master problems.  Understand derivations.  Organize guides.
                     </p>
-                    
                     <p>
-                        Now, the world is truly at your fingertips. 
+                    	What were once the most frustrating and elusive components of your study routine will now be the most organized and easiest to access. Never again will you not understand or remember a formula. In fact, you may even realize an interest for formulas you never knew you had!
                     </p>
+                    <p>
+                        Whatever the case, with <b>Principia</b> at your disposal, you can bring the world of equations to your fingertips
+                    </p>
+                    <br>
+                    <div style = "margin-left:auto;margin-right:auto;width:28%">
+                        <div class = "row">
+                            <div class = "col-md-6">
+                                <button class = "btn btn-default" style = "background-color:#f1c40f"><a href = "/sessions/signup"><b>Sign Up</b></a></button>
+                            </div>
+                            <div class = "col-md-6">
+                                <button class = "btn btn-default" style = "background-color:#f1c40f"><a href = "/sessions/login"><b>Log In</b></a></button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class = "col-md-2"></div>
+            </div>
+            <br>
+            <br>
+            <div class = "row">
+                <div class = "col-md-1"></div>
+
+                <div class = "col-md-4" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
+                    <div class = "page-header"><h1>Features</h1></div>
+                    	<ul>
+                    		<li>Access a wide variety of formulas from multiple disciplines</li>
+                    		<li>Go beyond the scope of the course and learn about the history and derivation of each equation</li>
+                    		<li>Get access to practice problems and application information</li>
+                    		<li>Create a profile to get more out of Principia</li>
+                    		<li>Save the formulas you want to your profile for easy access</li>
+                    		<li>Solve the equations you want with ease (COMING SOON)</li>
+                    	</ul>
+                    <br>
+                </div>
+				
+                <div class = "col-md-2"></div>
+
+                <div class = "col-md-4" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
+                    <div class = "page-header"><h1>Testimonials</h1></div>
+                    	<ul>
+                    		<li>"This will really help me with my tough schedule this year!" <i>~ Vishnu I.</i></li>
+                    		<li>"Mind-blowing website worthy of the Nobel Peace Prize." <i>~ Aneesh M.</i></li>
+                    		<li>"The creative team behind this site must be the most innovative, the most altruistic, and the most handsome young men to ever grace the Hackathon scene." ~ <i>Archibald C.</i></li>
+                    		<li>"It's pretty good." ~ <i>Shreyas B.</i></li>
+                    	</ul>
                     <br>
                 </div>
 
-                <div class = "col-md-2"></div>
+                <div class = "col-md-1"></div>
             </div>
 		</div>
+        <br>
+        <br>
 	</body>
 </html>

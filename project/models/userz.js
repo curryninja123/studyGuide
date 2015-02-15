@@ -32,8 +32,8 @@ var userSchema = new Schema({
 	email: {type: String, unique: true},
 	hash: String,
 	salt: String,
-	isAdmin: {type: Boolean, default: false},
-	addedFormulas = [{type: Schema.Types.ObjectId, ref: 'Formula'}]
+	isAdmin: { type: Boolean, default: false },
+	addedFormulas : [{type: Schema.Types.ObjectId, ref: 'Formula'}],
 	groups: [Schema.Types.ObjectId],
 });
 
@@ -143,6 +143,7 @@ exports.loginvar = function() {
 			if (req.session.user.isAdmin)
 				res.locals.isAdmin = true;
 			res.locals.loggedIn = true;
+			res.locals.user = req.session.user;
 		}
 		else {
 			res.locals.isAdmin = false;

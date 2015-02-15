@@ -3,6 +3,7 @@
 	<head>
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
 	</head>
     <body style = "background-color:#42647f">
 		<div class="container-fluid">
@@ -16,7 +17,7 @@
                             <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
                             <li><a href = "/sessions/logout">Log Out</a></li>
-                        <% } %>
+                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>                        <% } %>
 					</ul>
 				</div>
 			</nav>
@@ -30,6 +31,7 @@
                     <p>We would like to welcome you, <b><%= user.firstname %></b> to our website. Feel free to browse our extensive collection of articles, formulas, and study guides.</p>
                     <br>
                     <div class = "row" >
+<<<<<<< HEAD
                         <div class = "col-md-4">
                             <a class = "esp">View Our Equations Database</a>
                             <a class = "esp">My Profile</a>
@@ -38,6 +40,21 @@
                         <br>
                         <br>
                         <br>
+=======
+                        <div class = "col-md-12">
+                    <% for (var i = 0; i < categories.length; i++) { %>
+                        <div class="col-md-6" style = "">
+                            <div class = "page-header" style="text-align:center"><h2><%= categories[i].name %></h2></div>
+                            <% for (var j = 0; j < categories[i].subjects.length; j++) { %>
+                                    <a class= "esp" href="/formula/subject/<%= categories[i].subjects[j].name %>"><%= categories[i].subjects[j].name %></a>
+                            <% } %>
+                            <br><br>
+                        </div>
+                    <% } %>
+                    <br>
+                    <br>
+                </div>
+>>>>>>> b1eda5cb67b723afbbfe9e4801bff0b41c521ede
                     </div>
                 </div>
                 <div class="col-md-2"></div>

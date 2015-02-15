@@ -20,27 +20,32 @@
 					</ul>
 				</div>
 			</nav>
-
-			<div class="minipage">
-				<h1><%= formula.title %></h1>
-				<p id="equation">$$<%= formula.formula %>$$</p>
-				<h2>History</h2>
-				<div id="history">
-					<%= formula.history %>
-				</div>
-				<h2>Examples</h2>
-				<div id="examples">
-					<%- formula.examples %>
-				</div>
-				<h2>Proofs</h2>
-				<div id="proofs">
-					<%- formula.proofs %>
-				</div>
-				<h2>Practice</h2>
-				<div id="practice">
-					<%- formula.practice %>
-				</div>
-			</div>
+            <div class = "row">
+                <div class = "col-md-2"></div>
+                <div class = "col-md-8">
+                    <div class="jumbotron">
+                        <h1><%= formula.title %></h1>
+                        <p id="equation">$$<%= formula.formula %>$$</p>
+                        <h2>History</h2>
+                        <div id="history">
+                            <%= formula.history %>
+                        </div>
+                        <h2>Examples</h2>
+                        <div id="examples">
+                            <%= formula.examples %>
+                        </div>
+                        <h2>Proofs</h2>
+                        <div id="proofs">
+                            <%= formula.proofs %>
+                        </div>
+                        <h2>Practice</h2>
+                        <div id="practice">
+                            <%= formula.practice %>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-2"></div>
+            </div>
 		</div>
 	</body>
 </html>

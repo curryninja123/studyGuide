@@ -45,6 +45,7 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 		formula: req.body.formula,
 		title: req.body.title,
 		proofs: req.body.proofs,
+		examples: req.body.examples,
 		history: req.body.history,
 		tags: (req.body.tags || "general").split(" "),
 		practice: req.body.practice,

@@ -24,7 +24,10 @@ router.get('/view/:formulaId', function(req, res) {
 });
 
 router.get('/make', userz.verify, function(req, res) {
-	res.render('formula/make', {title: 'Make Formula'})
+	structs.Subject.find().exec(function(err, result) {
+		console.log(result);
+		res.render('formula/make', {title: 'Make Formula', subjects: result});
+	})
 });
 
 router.get('/display/:formulaId', function(req, res) {
@@ -58,6 +61,14 @@ router.post('/create', userz.verifyAdmin, function(req, res) {
 		}
 		else {
 			res.redirect('/formula/view/' + result.id.toString());
+			subjects = req.body.subjects;
+			if (subjects) {
+				for (var i = 0; i < subjects.length; i++) {
+					structs.Subject.update({name: subjects[i]}, {
+						$push: {formulas: result.id},
+					});
+				}
+			}
 		}
 	});
 });

@@ -31,3 +31,4 @@ var groupSchema = new Schema({
 exports.Formula = mongoose.model('Formula', formulaSchema);
 exports.Subject = mongoose.model('Subject', subjectSchema);
 exports.Group = mongoose.model('Group', groupSchema);
+exports.Category = mongoose.model('Category', categorySchema);

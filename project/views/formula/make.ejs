@@ -46,6 +46,17 @@
                             <label for = "practice">Practice</label>
                             <textarea class = "form-control" id = "practice" name = "practice" rows="10"></textarea>
                         </div>
+                       
+                        <% for (var i = 0; i < subjects.length; i++) { %>
+	                        <div class="checkbox">
+	                        	<label>
+									<input type="checkbox" name=<%= subjects[i].name %>/>
+									<%= subjects[i].name %>
+	                        	</label>
+                        	</div>
+                        <% } %>
+
+                    
                         <button type = "submit" class = "btn btn-primary">Create Formula</button>
 				</form>
 			</div>

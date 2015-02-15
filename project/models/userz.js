@@ -143,6 +143,7 @@ exports.loginvar = function() {
 			if (req.session.user.isAdmin)
 				res.locals.isAdmin = true;
 			res.locals.loggedIn = true;
+			res.locals.user = req.session.user;
 		}
 		else {
 			res.locals.isAdmin = false;

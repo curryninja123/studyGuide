@@ -20,22 +20,6 @@
         </style>
 	</head>
 	<body>
-		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-				<div>
-					<ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-						<li><a href = "/">Home</a></li>
-						<li><a href = "/sessions/welcome">Start</a></li>
-						<% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
-                        <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
-                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
-                        <% } %>
-                    </ul>
-                </div>
-            </nav>
         <div class = "container-fluid">
             <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
                 <div>
@@ -47,6 +31,7 @@
                             <li><a href = "/sessions/signup"><b>Sign Up</b></a></li>
                         <% } else { %>
                             <li><a href = "/sessions/logout"><b>Log Out</b></a></li>
+                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
                         <% } %>
                     </ul>
                 </div>

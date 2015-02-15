@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 	<head>
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
@@ -27,14 +28,32 @@
 						<li><a href = "/">Home</a></li>
 						<li><a href = "/sessions/welcome">Start</a></li>
 						<% if (!loggedIn) { %>
+=======
+    <head>
+        <meta charset = "utf-8">
+        <link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
+        <link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
+        <script src="/javascripts/display.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    </head>
+    <body>
+        <div class = "container-fluid">
+            <nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
+                <div>
+                    <ul class = "nav navbar-nav">
+                        <li><a href = "/">Home</a></li>
+                        <li><a href = "/sessions/welcome">Welcome</a></li>
+                        <% if (!loggedIn) { %>
+>>>>>>> 60532e115b60f6ae8c95f28d77434a021b79a82b
                             <li><a href = "/sessions/login">Login</a></li>
                             <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
                             <li><a href = "/sessions/logout">Log Out</a></li>
                         <% } %>
-					</ul>
-				</div>
-			</nav>
+                    </ul>
+                </div>
+            </nav>
             <br>
             <br>
             <br>
@@ -57,22 +76,22 @@
                         <div class = "page-header"><h2>History</h2></div>
                         
                         <div id="history">
-                            <%= formula.history %>
+                            <%- formula.history %>
                         </div>
                         <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
                         <div class = "page-header"><h2>Examples</h2></div>
                         <div id="examples">
-                            <%= formula.examples %>
+                            <%- formula.examples %>
                         </div>
                         <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
                         <div class = "page-header"><h2>Proofs</h2></div>
                         <div id="proofs">
-                            <%= formula.proofs %>
+                            <%- formula.proofs %>
                         </div>
                         <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
                         <div class = "page-header"><h2>Practice</h2></div>
                         <div id="practice">
-                            <%= formula.practice %>
+                            <%- formula.practice %>
                         </div>
                         <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
                         
@@ -81,7 +100,12 @@
                 </div>
                 <div class = "col-md-2"></div>
             </div>
+<<<<<<< HEAD
             <br>
 		</div>
 	</body>
+=======
+        </div>
+    </body>
+>>>>>>> 60532e115b60f6ae8c95f28d77434a021b79a82b
 </html>

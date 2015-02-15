@@ -32,7 +32,8 @@ var userSchema = new Schema({
 	email: {type: String, unique: true},
 	hash: String,
 	salt: String,
-	isAdmin: {type: Boolean, default: false}
+	isAdmin: {type: Boolean, default: false},
+	groups: [Schema.Types.ObjectId]
 });
 
 var User = mongoose.model('User', userSchema);

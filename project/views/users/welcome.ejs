@@ -4,19 +4,47 @@
 		<meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
 	</head>
+    <body>
 		<div class="container-fluid">
 			<nav class = "navbar navbar-fixed-top" style = "background-color:#333333">
 				<div>
 					<ul class = "nav navbar-nav">
 						<li><a href = "/">Home</a></li>
 						<li><a href = "/sessions/welcome">Welcome</a></li>
-						<li><a href = "/sessions/login">Login</a></li>
-						<li><a href = "/sessions/signup">Sign Up</a></li>
+						<% if (!loggedIn) { %>
+                            <li><a href = "/sessions/login">Login</a></li>
+                            <li><a href = "/sessions/signup">Sign Up</a></li>
+                        <% } else { %>
+                            <li><a href = "/sessions/logout">Log Out</a></li>
+                        <% } %>
 					</ul>
 				</div>
 			</nav>
 			<div id = "welcome-info" style="margin-top:6em"></div>
-			<h1>Welcome</h1>
-			<p>We would like to welcome you, <%= user.firstname %>, to our site</p>
+			<div class = "row">
+                <div class = "col-md-2"></div>
+                <div class = "col-md-8">
+                    <div class = "page-header">
+                        <h1>Welcome</h1>
+                    </div>
+                    <p>We would like to welcome you, <b><%= user.firstname %></b> to our website. Feel free to browse our extensive collection of articles, formulas, and study guides.</p>
+                    <br>
+                    <div class = "row" >
+                        <div class = "col-md-3"></div>
+                        <div class = "col-md-2"style="margin-left:auto;margin-right:auto;width:18%;">
+                            <button class = "btn btn-primary">Mathematics</button>
+                        </div>
+                        <div class = "col-md-2"style="margin-left:auto;margin-right:auto;width:15%;">
+                            <button class = "btn btn-success">Physics</button>
+                        </div>
+                        <div class = "col-md-2"style="margin-left:auto;margin-right:auto;width:20%;">
+                            <button class = "btn btn-danger">Chemistry</button>
+                        </div>
+                        <div class = "col-md-3"></div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
 		</div>
+    </body>
 </html>

@@ -15,32 +15,59 @@
 					<ul class = "nav navbar-nav">
 						<li><a href = "/">Home</a></li>
 						<li><a href = "/sessions/welcome">Welcome</a></li>
-						<li><a href = "/sessions/login">Login</a></li>
-						<li><a href = "/sessions/signup">Sign Up</a></li>
+						<% if (!loggedIn) { %>
+                            <li><a href = "/sessions/login">Login</a></li>
+                            <li><a href = "/sessions/signup">Sign Up</a></li>
+                        <% } else { %>
+                            <li><a href = "/sessions/logout">Log Out</a></li>
+                        <% } %>
 					</ul>
 				</div>
 			</nav>
-
-			<div class="minipage">
-				<h1><%= formula.title %></h1>
-				<p id="equation">$$<%= formula.formula %>$$</p>
-				<h2>History</h2>
-				<div id="history">
-					<%= formula.history %>
-				</div>
-				<h2>Examples</h2>
-				<div id="examples">
-					<%- formula.examples %>
-				</div>
-				<h2>Proofs</h2>
-				<div id="proofs">
-					<%- formula.proofs %>
-				</div>
-				<h2>Practice</h2>
-				<div id="practice">
-					<%- formula.practice %>
-				</div>
-			</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class = "row">
+                <div class = "col-md-2"></div>
+                <div class = "col-md-8">
+                    <div class="jumbotron">
+                        <h1><%= formula.title %></h1>
+                        <p id="equation">$$<%= formula.formula %>$$</p>
+<!--                        <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>-->
+                        <div id = "top"></div>
+                            <ul class = "nav nav-tabs">
+                                <li role = "presentation"><a href = "#history">History</a></li>
+                                <li role = "presentation"><a href = "#examples">Examples</a></li>
+                                <li role = "presentation"><a href = "#proofs">Proofs</a></li>
+                                <li role = "presentation"><a href = "#practice">Practice</a></li>
+                            </ul>
+                        <div id = "write"></div>
+                        <h2>History</h2>
+                        
+                        <div id="history">
+                            <%= formula.history %>
+                        </div>
+                        <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
+                        <h2>Examples</h2>
+                        <div id="examples">
+                            <%= formula.examples %>
+                        </div>
+                        <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
+                        <h2>Proofs</h2>
+                        <div id="proofs">
+                            <%= formula.proofs %>
+                        </div>
+                        <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
+                        <h2>Practice</h2>
+                        <div id="practice">
+                            <%= formula.practice %>
+                        </div>
+                        <button class = "btn btn-default"><a href = "#top">Back To Top</a></button>
+                    </div>
+                </div>
+                <div class = "col-md-2"></div>
+            </div>
 		</div>
 	</body>
 </html>

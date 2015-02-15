@@ -24,8 +24,14 @@ var subjectSchema = new Schema({
 });
 
 var groupSchema = new Schema({
+	name: String,
 	users: [Schema.Types.ObjectId],
-	articles: [Schema.Types.ObjectId]
+	articles: [Schema.Types.ObjectId],
+	messageBoard: [{
+		content: String,
+		sender: Schema.Types.ObjectId,
+		sent: Date
+	}]
 });
 
 exports.Formula = mongoose.model('Formula', formulaSchema);

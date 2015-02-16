@@ -33,9 +33,7 @@ app.use(session({
     saveUninitialized: true,
     resave: true,
     store: new MongoStore({
-      db : settings.dbName,
-      host: settings.dbHost,
-      port: settings.dbPort
+        url: settings.dbURI
     })
 }));
 
@@ -67,15 +65,15 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-// if (app.get('env') === 'development') {
-//     app.use(function(err, req, res, next) {
-//         res.status(err.status || 500);
-//         res.render('error', {
-//             message: err.message,
-//             error: err
-//         });
-//     });
-// }
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
 
 var mongoose = require( 'mongoose' );
 var dbURI = settings.dbURI;

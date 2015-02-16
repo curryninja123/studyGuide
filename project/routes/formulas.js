@@ -25,7 +25,6 @@ router.get('/view/:formulaId', function(req, res) {
 
 router.get('/make', userz.verify, function(req, res) {
 	structs.Subject.find().exec(function(err, result) {
-		console.log(result);
 		res.render('formula/make', {
 			title: 'Make Formula', 
 			subjects: result,
@@ -61,9 +60,6 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 			res.send(JSONError);
 		}
 		else {
-			console.log(req.session.user);
-			console.log('formula ' + req.params.formulaId);
-			console.log('user ' + req.session.user._id);
 			userz.User.findByIdAndUpdate(req.session.user._id, {
 				$addToSet: {
 					addedFormulas: req.params.formulaId,
@@ -71,8 +67,7 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 			}).exec(function(err, success) {
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSONSuccess);
-				console.log('Sent');
-				console.log(success);
+
 			});
 		}
 	});
@@ -95,12 +90,10 @@ router.post('/create', userz.verify, function(req, res) {
 	theFormula.save(function(err, result) {
 		if (err) {
 			console.log(err);
-			res.render('error', {title: 'Error'});
+			res.render('productionError', {status: 500});
 		}
 		else {
 			subjects = req.body.subjects;
-			console.log(req.body.subjects);
-			console.log(result.id);
 			if (subjects && typeof(subjects) == "string") {
 				structs.Subject.findOneAndUpdate({name: subjects}, {
 					$addToSet: {formulas: ObjectId(result.id)},
@@ -138,7 +131,6 @@ router.get('/subject/:name', function(req, res) {
 			res.render('Error', {message: "Error", error: {status: "500", stack: "Denied"}});
 		}
 		else {
-			console.log(result);
 			res.render('formula/subjectListing', {title: result.name, subject: result});
 		}
 	});
@@ -147,7 +139,6 @@ router.get('/subject/:name', function(req, res) {
 router.get('/edit/:formulaId', userz.verify, function(req, res) {
 	structs.Formula.findById(req.params.formulaId, function(err, formula) {
 		structs.Subject.find().exec(function(err, result) {
-			console.log(result);
 			res.render('formula/make', {
 				title: 'Make Formula', 
 				subjects: result,

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
+		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+        <script src="/javascripts/display.js"></script>
+        <style>
+            body {
+                background-color: #42647F;
+            }
+            div.bord{
+                border-width:9px;
+                border-style:solid;
+                border-color:#34495e;
+                background-color:#ecf0f1;
+            }
+        </style>
+	</head>
+	<body>
+        <div class = "container-fluid">
+            <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
+                <div>
+                    <ul class = "nav navbar-nav">
+                        <li><a href = "/"><b>Home</b></a></li>
+                        <li><a href = "/sessions/welcome"><b>Welcome</b></a></li>
+                        <% if (!loggedIn) { %>
+                            <li><a href = "/sessions/login"><b>Login</b></a></li>
+                            <li><a href = "/sessions/signup"><b>Sign Up</b></a></li>
+                        <% } else { %>
+                            <li><a href = "/sessions/logout"><b>Log Out</b></a></li>
+                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="bord">
+                        <div class="jumbotron">
+                            <h2>Oops! We could not load your page</h2>
+                            <hr/>
+                            <h4>Error Code: <emph style="color:#d65"><%= status %></emph></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            <br>
+		</div>
+	</body>
+        </div>
+    </body>
+</html>

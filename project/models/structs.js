@@ -8,6 +8,7 @@ var formulaSchema = new Schema({
 	title: String,
 	history: String,
 	variableDefinitions: String,
+	solver: String,
 	tags: [String],
 	practice: String
 });

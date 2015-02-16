@@ -26,7 +26,19 @@ router.get('/view/:formulaId', function(req, res) {
 router.get('/make', userz.verify, function(req, res) {
 	structs.Subject.find().exec(function(err, result) {
 		console.log(result);
-		res.render('formula/make', {title: 'Make Formula', subjects: result});
+		res.render('formula/make', {
+			title: 'Make Formula', 
+			subjects: result,
+			solver: '',
+			formula: '',
+			title: '',
+			examples: '',
+			proofs: '',
+			history: '',
+			variableDefinitions: '',
+			tags: '',
+			practice: '',
+		});
 	})
 });
 
@@ -73,6 +85,7 @@ router.post('/create', userz.verify, function(req, res) {
 		title: req.body.title,
 		proofs: req.body.proofs,
 		examples: req.body.examples,
+		solver: req.body.solver,
 		history: req.body.history,
 		variableDefinitions: req.body.variableDefinitions,
 		tags: (req.body.tags || "general").split(" "),
@@ -131,7 +144,28 @@ router.get('/subject/:name', function(req, res) {
 	});
 });
 
-router.post('/update/:formulaId', userz.verifyAdmin, function(req, res) {
+router.get('/edit/:formulaId', userz.verify, function(req, res) {
+	structs.Formula.findById(req.params.formulaId, function(err, formula) {
+		structs.Subject.find().exec(function(err, result) {
+			console.log(result);
+			res.render('formula/make', {
+				title: 'Make Formula', 
+				subjects: result,
+				solver: formula.solver || '',
+				formula: formula.formula,
+				title: formula.title,
+				examples: formula.examples,
+				proofs: formula.proofs,
+				history: formula.history,
+				variableDefinitions: formula.variableDefinitions,
+				tags: formula.tags.join(" "),
+				practice: formula.practice
+			});
+		});
+	});
+});
+
+router.post('/update/:formulaId', userz.verify, function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
 	structs.Formula.update({_id: ObjectId(req.params.formulaId)}, { 
 		$set: {
@@ -139,6 +173,7 @@ router.post('/update/:formulaId', userz.verifyAdmin, function(req, res) {
 			title: req.body.title,
 			examples: req.body.examples,
 			proofs: req.body.proofs,
+			solver: req.body.solver,
 			history: req.body.history,
 			variableDefinitions: req.body.variableDefinitions,
 			tags: (req.body.tags || "general").split(" "),
@@ -149,7 +184,7 @@ router.post('/update/:formulaId', userz.verifyAdmin, function(req, res) {
 			res.send(JSONError);
 		}
 		else {
-			res.redirect('/formula/view/' + req.params.formulaId);
+			res.redirect('/formula/display/' + req.params.formulaId);
 		}
 	});
 });

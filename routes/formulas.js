@@ -8,7 +8,15 @@ var JSONError = '{ "error": true, "message": "Unable to fulfill request" }'
 var JSONSuccess = '{ "error": false, "message": "Request fulfilled" }'
 
 router.get('/', function(req, res) {
-	res.send("FORMULAS");
+	structs.Formula.find().exec(function(err, result) {
+		if (err || !result) {
+			console.log(err + " --- " + result);
+			res.render('productionError', {status: 500});
+		}
+		else {
+			res.render('formula/index', {title: 'Formula Listing', formulas: result});
+		}
+	});
 });
 
 router.get('/view/:formulaId', function(req, res) {
@@ -139,8 +147,9 @@ router.get('/subject/:name', function(req, res) {
 router.get('/edit/:formulaId', userz.verify, function(req, res) {
 	structs.Formula.findById(req.params.formulaId, function(err, formula) {
 		structs.Subject.find().exec(function(err, result) {
-			res.render('formula/make', {
+			res.render('formula/update', {
 				title: 'Make Formula', 
+				formulaId: req.params.formulaId,
 				subjects: result,
 				solver: formula.solver || '',
 				formula: formula.formula,

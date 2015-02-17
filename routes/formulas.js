@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 	structs.Formula.find().exec(function(err, result) {
 		if (err || !result) {
 			console.log(err + " --- " + result);
-			res.render('productionError', {status: 500});
+			res.render('productionError', {status: 503});
 		}
 		else {
 			res.render('formula/index', {title: 'Formula Listing', formulas: result});

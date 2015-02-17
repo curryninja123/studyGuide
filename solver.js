@@ -21,3 +21,30 @@ var functionMap = {
 };
 
 // http://localhost:8000/formula/display/54e0c221ab3501c5e6a198c6
+var supportedVars = ['A', 'P', 'r', 't'];
+var functionMap = {
+	'A' : {
+		prompt: ['P', 'r', 'n', 't'],
+		solve: function(arr) {
+			return arr[0] * Math.pow(1.0 + arr[1] / arr[2], arr[2] * arr[3]);
+		}
+	},
+	'P' : {
+		prompt: ['A', 'r', 'n', 't'],
+		solve: function(arr) {
+			return arr[0] / Math.pow(1.0 + arr[1] / arr[2], arr[2] * arr[3]);
+		}
+	},
+	'r' : {
+		prompt: ['A', 'P', 'n', 't'],
+		solve: function(arr) {
+			return arr[2] * (-1.0 + Math.pow(arr[0] / arr[1], 1.0 / arr[2] / arr[3]));
+		}
+	},
+	't' : {
+		prompt: ['A', 'P', 'r', 'n'],
+		solve: function(arr) {
+			return Math.log(arr[0] / arr[1]) / Math.log(1 + arr[2] / arr[3]) / arr[3];
+		}
+	}
+};

@@ -38,56 +38,60 @@
                 <div class = "col-md-2"></div>
                 <div class = "col-md-8">
                     <div class = "bord">
-                    <div class="jumbotron" style = "background-color:#ecf0f1">
-                        <div class = "page header" id="top"><h1><%= formula.title %></h1></div>
-                        <p id="equation">$$<%= formula.formula %>$$</p>
-                        <p id = "equationSmaller"><%= formula.variableDefinitions %></p>
-                        <% if (formula.solver) { %>
-                            <script type='text/javascript'><%- formula.solver %></script>
-                            <h2> Solve For </h2>
-                            <div id='solver'></div>
-                            <div id='solver2'></div>
-                            <p id='solveResult'></p>
-                            <hr>
-                        <% } %>
-                        <div></div>
-                            <ul class = "nav nav-tabs">
-                                <li role = "presentation"><a href = "#history">History</a></li>
-                                <li role = "presentation"><a href = "#examples">Examples</a></li>
-                                <li role = "presentation"><a href = "#proofs">Proofs</a></li>
-                                <li role = "presentation"><a href = "#practice">Practice</a></li>
-                            </ul>
-                        <div class = "page-header"><h2>History</h2></div>
-                        
-                        <div id="history">
-                            <%- formula.history %>
+                        <div class="jumbotron" style = "background-color:#ecf0f1">
+                            <div class = "page header" id="top"><h1><%= formula.title %></h1></div>
+                            <p id="equation">$$<%= formula.formula %>$$</p>
+                            <p id = "equationSmaller"><%= formula.variableDefinitions %></p>
+                            <% if (formula.solver) { %>
+                                <script type='text/javascript'><%- formula.solver %></script>
+                                <h2> Solve For </h2>
+                                <div id='solver'></div>
+                                <div id='solver2'></div>
+                                <p id='solveResult'></p>
+                                <hr>
+                            <% } %>
+                            <div></div>
+                                <ul class = "nav nav-tabs">
+                                    <li role = "presentation"><a href = "#history">History</a></li>
+                                    <li role = "presentation"><a href = "#examples">Examples</a></li>
+                                    <li role = "presentation"><a href = "#proofs">Proofs</a></li>
+                                    <li role = "presentation"><a href = "#practice">Practice</a></li>
+                                </ul>
+                            <div class = "page-header"><h2>History</h2></div>
+                            
+                            <div id="history">
+                                <%- formula.history %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Examples</h2></div>
+                            <div id="examples">
+                                <%- formula.examples %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Proofs</h2></div>
+                            <div id="proofs">
+                                <%- formula.proofs %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Practice</h2></div>
+                            <div id="practice">
+                                <%- formula.practice %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a><br/><br/>
+                            <button class="btn btn-primary" onclick="addToProfile('<%= formula.id %>')">
+                                Add Formula To Profile
+                            </button>
+                            <br>
+                            <button class = "btn btn-primary"><a href = "/formula/update/<%= formulaId %>">
+                                <b>Update Formula</b></a>
+                            </button>
+                            <br>
+                            <div id="bottom-alerts"></div>
                         </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Examples</h2></div>
-                        <div id="examples">
-                            <%- formula.examples %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Proofs</h2></div>
-                        <div id="proofs">
-                            <%- formula.proofs %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Practice</h2></div>
-                        <div id="practice">
-                            <%- formula.practice %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a><br/><br/>
-                        <button class="btn btn-primary" onclick="addToProfile('<%= formula.id %>')">
-                            Add Formula To Profile
-                        </button>
-                        <br><br>
-                        <div id="bottom-alerts"></div>
-                    </div>
                     </div>
                 </div>
                 <div class = "col-md-2"></div>
@@ -95,6 +99,4 @@
             <br>
 		</div>
 	</body>
-        </div>
-    </body>
 </html>

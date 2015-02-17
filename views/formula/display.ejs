@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset = "utf-8">
+		<title>Principia | Formula</title>
+        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+        <meta charset = "utf-8">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
 		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
         <link rel = "stylesheet" type = "text/css" href = "/stylesheets/bluebox.css">
@@ -13,16 +15,18 @@
         <div class = "container-fluid">
             <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
                 <div>
-                    <ul class = "nav navbar-nav">
-                        <li><a href = "/"><b>Home</b></a></li>
-                        <li><a href = "/sessions/welcome"><b>Welcome</b></a></li>
+                    <ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
+                        <li><a href = "/">Home</a></li>
+                        <li><a href = "/sessions/welcome">Start</a></li>
                         <% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login"><b>Login</b></a></li>
-                            <li><a href = "/sessions/signup"><b>Sign Up</b></a></li>
+                            <li><a href = "/sessions/login">Login</a></li>
+                            <li><a href = "/sessions/signup">Sign Up</a></li>
                         <% } else { %>
-                            <li><a href = "/sessions/logout"><b>Log Out</b></a></li>
+                            <li><a href = "/sessions/logout">Log Out</a></li>
                             <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
+                            <li><a href = "/formula/make"><b>Make Formula</b></a></li>
                         <% } %>
+                        <li><a href = "/formula/">All Formulas</a></li>
                     </ul>
                 </div>
             </nav>
@@ -32,65 +36,73 @@
             <br>
             <div class = "row">
                 <div class = "col-md-2"></div>
+
                 <div class = "col-md-8">
                     <div class = "bord">
-                    <div class="jumbotron" style = "background-color:#ecf0f1">
-                        <div class = "page header" id="top"><h1><%= formula.title %></h1></div>
-                        <p id="equation">$$<%= formula.formula %>$$</p>
-                        <p id = "equationSmaller"><%= formula.variableDefinitions %></p>
-                        <% if (formula.solver) { %>
-                            <script type='text/javascript'><%- formula.solver %></script>
-                            <h2> Solve For </h2>
-                            <div id='solver'></div>
-                            <div id='solver2'></div>
-                            <p id='solveResult'></p>
-                            <hr>
-                        <% } %>
-                        <div></div>
-                            <ul class = "nav nav-tabs">
-                                <li role = "presentation"><a href = "#history">History</a></li>
-                                <li role = "presentation"><a href = "#examples">Examples</a></li>
-                                <li role = "presentation"><a href = "#proofs">Proofs</a></li>
-                                <li role = "presentation"><a href = "#practice">Practice</a></li>
-                            </ul>
-                        <div class = "page-header"><h2>History</h2></div>
-                        
-                        <div id="history">
-                            <%- formula.history %>
+                        <div class="jumbotron" style = "background-color:#ecf0f1">
+                            <div class = "page header" id="top"><h1><%= formula.title %></h1></div>
+                            <p id="equation">$$<%= formula.formula %>$$</p>
+                            <p id = "equationSmaller"><%= formula.variableDefinitions %></p>
+                            <% if (formula.solver) { %>
+                                <script type='text/javascript'><%- formula.solver %></script>
+                                <h2> Solve For </h2>
+                                <div id='solver'></div>
+                                <div id='solver2'></div>
+                                <p id='solveResult'></p>
+                                <hr>
+                            <% } %>
+                            <div></div>
+                                <ul class = "nav nav-tabs">
+                                    <li role = "presentation"><a href = "#history">History</a></li>
+                                    <li role = "presentation"><a href = "#examples">Examples</a></li>
+                                    <li role = "presentation"><a href = "#proofs">Proofs</a></li>
+                                    <li role = "presentation"><a href = "#practice">Practice</a></li>
+                                </ul>
+                            <div class = "page-header"><h2>History</h2></div>
+                            
+                            <div id="history">
+                                <%- formula.history %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Examples</h2></div>
+                            <div id="examples">
+                                <%- formula.examples %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Proofs</h2></div>
+                            <div id="proofs">
+                                <%- formula.proofs %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a>
+                            <div class = "page-header"><h2>Practice</h2></div>
+                            <div id="practice">
+                                <%- formula.practice %>
+                            </div>
+                            <br>
+                            <a href = "#top">Back To Top</a><br/><br/>
+
+                            <button class="btn btn-primary" onclick="addToProfile('<%= formula.id %>')">
+                                Add Formula To Profile
+                            </button>
+                            
+                            <br>
+                            <!-->
+                            <button class = "btn btn-primary"><a href = "/formula/update/<%= formulaId %>">
+                                <b>Update Formula</b></a>
+                            </button>
+                            </-->
+                            <br>
+                            <div id="bottom-alerts"></div>
                         </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Examples</h2></div>
-                        <div id="examples">
-                            <%- formula.examples %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Proofs</h2></div>
-                        <div id="proofs">
-                            <%- formula.proofs %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a>
-                        <div class = "page-header"><h2>Practice</h2></div>
-                        <div id="practice">
-                            <%- formula.practice %>
-                        </div>
-                        <br>
-                        <a href = "#top">Back To Top</a><br/><br/>
-                        <button class="btn btn-primary" onclick="addToProfile('<%= formula.id %>')">
-                            Add Formula To Profile
-                        </button>
-                        <br><br>
-                        <div id="bottom-alerts"></div>
-                    </div>
                     </div>
                 </div>
+
                 <div class = "col-md-2"></div>
             </div>
             <br>
 		</div>
 	</body>
-        </div>
-    </body>
 </html>

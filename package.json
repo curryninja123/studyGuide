@@ -20,6 +20,6 @@
     "static-favicon": "~1.0.0"
   },
   "engine": {
-    "node": "0.10.x",
+    "node": "0.10.x"
   }
 }

@@ -20,5 +20,5 @@ else {
 				module.exports.dbPort + '/' +
 				module.exports.dbName;
 	module.exports.cookie_secret = process.env['SECRET_COOKIE'];
-	module.exports.port = 8000;
+	module.exports.port = 80;
 }

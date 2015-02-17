@@ -85,9 +85,6 @@ mongoose.connection.on('error',function (err) {
   console.log('Mongoose default connection error: ' + err);
 });
 
-
-app.listen(settings.port);
-
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -99,5 +96,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
 module.exports = app;
+app.listen(settings.port);
+

@@ -66,7 +66,7 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 		if (err || !result || (req.session.user.addedFormulas && req.session.user.addedFormulas.indexOf(req.params.formulaId) > 0)) {
 			res.setHeader('Content-Type', 'application/json');
 			res.send(JSONError);
-		\m gvds aenh
+		}
 		else {
 			userz.User.findByIdAndUpdate(req.session.user._id, {
 				$addToSet: {
@@ -75,6 +75,7 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 			}).exec(function(err, success) {
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSONSuccess);
+
 			});
 		}
 	});

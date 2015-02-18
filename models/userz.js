@@ -82,7 +82,7 @@ exports.register = function(req, res, options) {
 	passwordField = options.passwordField || 'password';
 	firstnameField = options.firstnameField || 'firstname';
 	lastnameField = options.lastnameField || 'lastname';
-	passwordConfirmationField = options.passwordConfirmationField 
+	passwordConfirmationField = options.passwordConfirmationField
 		|| 'password_confirmation';
 	params = {
 		email: req.body[emailField],
@@ -101,8 +101,8 @@ exports.register = function(req, res, options) {
 	}
 	if (!passwordRegex.test(params.password)) {
 		wasError = true;
-		req.flash('error', 'Password invalid or too weak. ' +  
-			'Make sure it is at least 8 characters with one number,' + 
+		req.flash('error', 'Password invalid or too weak. ' +
+			'Make sure it is at least 8 characters with one number,' +
 			' one uppercase letter, and one lowercase letter');
 	}
 	if (!(nameRegex.test(params.firstname) && nameRegex.test(params.lastname))) {
@@ -129,7 +129,7 @@ exports.register = function(req, res, options) {
 			exports.createUser(params.firstname, params.lastname,
 						params.email, params.password, function(user) {
 				req.session.user = user;
-				req.flash('success', 'Welcome, new user');
+				req.flash('success', 'Welcome to your new account, ' + user.firstname);
 				res.redirect(successPath);
 			});
 		}
@@ -172,4 +172,3 @@ exports.verifyAdmin = function(req, res, next) {
 			res.send(403);
 	});
 }
-

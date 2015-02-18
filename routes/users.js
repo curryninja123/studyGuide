@@ -93,6 +93,7 @@ router.post('/session/new', function(req, res) {
 		}
 		else {
 			req.session.user = user;
+			req.flash('success', user.firstname + ', you have been logged in');
 			res.redirect('/sessions/welcome');
 		}
 	});

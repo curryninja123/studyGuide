@@ -9,23 +9,7 @@
 	</head>
 	<body style = "background-color:#42647f">
 		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-				<div>
-					<ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-						<li><a href = "/">Home</a></li>
-						<li><a href = "/sessions/welcome">Start</a></li>
-						<% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
-                        <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
-                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
-                            <li><a href = "/formula/make"><b>Make Formula</b></a></li>
-                        <% } %>
-                        <li><a href = "/formula/">All Formulas</a></li>
-					</ul>
-				</div>
-			</nav>
+            <% include partials/navbar %>
             <br>
             <br>
             <br>
@@ -42,6 +26,7 @@
 
                 <div class = "col-md-8" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
                     <div class = "page-header"><h1>About Our Website</h1></div>
+                    <% include partials/flash %>
                     <p>
                         Formulas litter our lives.  Everywhere we look, it’s <i>y = mx + b</i> this or <i>F = ma</i> that.  Don’t you think there should be some way to organize this?  To make better sense of our world, this website aims to consolidate math, science, and engineering study guides.  Here, you can treat yourself to more than just formulas.  Master problems.  Understand derivations.  Organize guides.
                     </p>

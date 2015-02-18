@@ -1,0 +1,20 @@
+<% if (error_messages && error_messages.length > 0) { %>
+	<%
+		if (!(error_messages.constructor === Array)) {
+			error_messages = [error_messages];
+		}
+	%>
+	<% error_messages.forEach(function(message) { %>
+	   <div class = "alert alert-danger"><b><%= message %></b></div>
+	<% }) %>
+<% } %>
+<% if (success_messages && success_messages.length > 0) { %>
+	<%
+		if (!(success_messages.constructor === Array)) {
+			success_messages = [success_messages];
+		}
+	%>
+	<% success_messages.forEach(function(message) { %>
+	   <div class = "alert alert-success"><b><%= message %></b></div>
+	<% }) %>
+<% } %>

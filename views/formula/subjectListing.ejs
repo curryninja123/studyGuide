@@ -11,23 +11,7 @@
         <br>
         <br>
         <div class = "container-fluid">
-            <nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-                <div>
-                    <ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-                        <li><a href = "/">Home</a></li>
-                        <li><a href = "/sessions/welcome">Start</a></li>
-                        <% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
-                        <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
-                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
-                            <li><a href = "/formula/make"><b>Make Formula</b></a></li>
-                        <% } %>
-                        <li><a href = "/formula/">All Formulas</a></li>
-                    </ul>
-                </div>
-            </nav>
+            <% include ../partials/navbar %>
             <br>
             <h1><%= subject.name %></h1>
             <% if (subject.formulas) { for (var i = 0; i < subject.formulas.length; i++) { %>

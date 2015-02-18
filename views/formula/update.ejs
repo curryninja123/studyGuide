@@ -12,69 +12,53 @@
 	</head>
 	<body>
 		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-				<div>
-					<ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-                        <li><a href = "/">Home</a></li>
-                        <li><a href = "/sessions/welcome">Start</a></li>
-                        <% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
-                        <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
-                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
-                            <li><a href = "/formula/make"><b>Make Formula</b></a></li>
-                        <% } %>
-                        <li><a href = "/formula/">All Formulas</a></li>
-                    </ul>
-				</div>
-			</nav>
-				<div style="margin-top: 6em"></div>
-               <form method="post" action="/formula/update/<%= formulaId %>">
-                        <div class ="form-group">
-                            <label for = "title">Title</label>
-                            <input type = "text" class = "form-control" value="<%= title || '' %>" id = "title" name = "title" placeholder = "Formula Title">
-                        </div>
-                        <div class ="form-group">
-                            <label for = "title">Formula Content</label>
-                            <input type = "text" class = "form-control" value="<%= formula || '' %>" id = "formula" name = "formula" placeholder = "Enter Formula (LaTeX supported)">
-                        </div>
-                        <div class ="form-group">
-                            <label for = "variableDefinitions">Variable Definitions</label>
-                            <textarea class = "form-control" value="<%= variableDefinitions || '' %>" id = "variableDefinitions" name = "variableDefinitions" rows="10"><%= variableDefinitions || '' %></textarea>
-                        </div>
-						<div class ="form-group">
-                            <label for = "examples">Examples</label>
-                            <textarea class = "form-control" value="<%= examples || '' %>" id = "examples" name = "examples" rows="10"><%= examples || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "proofs">Proofs</label>
-                            <textarea class = "form-control" value="<%= proofs || '' %>" id = "proofs" name = "proofs" rows="10"><%= proofs || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "history">History</label>
-                            <textarea class = "form-control" value="<%= history || '' %>" id = "history" name = "history" rows="10"><%= history || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "practice">Practice</label>
-                            <textarea class = "form-control" value="<%= practice || '' %>" id = "practice" name = "practice" rows="10"><%= practice || '' %></textarea>
-                        </div>
-                         <div class ="form-group">
-                            <label for = "solver">Solver</label>
-                            <textarea class = "form-control" value="<%= solver || '' %>" id = "solver" name = "solver" rows="10"><%= solver || '' %></textarea>
-                        </div>
-                       	
-                       	<div class="form-group">
-                       	<label for="subjects">Subjects</label>
-                        <% for (var i = 0; i < subjects.length; i++) { %>
-	                        <div class="checkbox">
-	                        	<label>
-									<input type="checkbox" name="subjects" value="<%= subjects[i].name %>">
-									<%= subjects[i].name %>
-	                        	</label>
-                        	</div>
-                        <% } %>
-                        </div>
+			<% include ../partials/navbar %>
+			<div style="margin-top: 6em"></div>
+            <form method="post" action="/formula/update/<%= formulaId %>">
+                <div class ="form-group">
+                    <label for = "title">Title</label>
+                    <input type = "text" class = "form-control" value="<%= title || '' %>" id = "title" name = "title" placeholder = "Formula Title">
+                </div>
+                <div class ="form-group">
+                    <label for = "title">Formula Content</label>
+                    <input type = "text" class = "form-control" value="<%= formula || '' %>" id = "formula" name = "formula" placeholder = "Enter Formula (LaTeX supported)">
+                </div>
+                <div class ="form-group">
+                    <label for = "variableDefinitions">Variable Definitions</label>
+                    <textarea class = "form-control" value="<%= variableDefinitions || '' %>" id = "variableDefinitions" name = "variableDefinitions" rows="10"><%= variableDefinitions || '' %></textarea>
+                </div>
+				<div class ="form-group">
+                    <label for = "examples">Examples</label>
+                    <textarea class = "form-control" value="<%= examples || '' %>" id = "examples" name = "examples" rows="10"><%= examples || '' %></textarea>
+                </div>
+                <div class ="form-group">
+                    <label for = "proofs">Proofs</label>
+                    <textarea class = "form-control" value="<%= proofs || '' %>" id = "proofs" name = "proofs" rows="10"><%= proofs || '' %></textarea>
+                </div>
+                <div class ="form-group">
+                    <label for = "history">History</label>
+                    <textarea class = "form-control" value="<%= history || '' %>" id = "history" name = "history" rows="10"><%= history || '' %></textarea>
+                </div>
+                <div class ="form-group">
+                    <label for = "practice">Practice</label>
+                    <textarea class = "form-control" value="<%= practice || '' %>" id = "practice" name = "practice" rows="10"><%= practice || '' %></textarea>
+                </div>
+                 <div class ="form-group">
+                    <label for = "solver">Solver</label>
+                    <textarea class = "form-control" value="<%= solver || '' %>" id = "solver" name = "solver" rows="10"><%= solver || '' %></textarea>
+                </div>
+               	
+               	<div class="form-group">
+               	<label for="subjects">Subjects</label>
+                <% for (var i = 0; i < subjects.length; i++) { %>
+                    <div class="checkbox">
+                    	<label>
+							<input type="checkbox" name="subjects" value="<%= subjects[i].name %>">
+							<%= subjects[i].name %>
+                    	</label>
+                	</div>
+                <% } %>
+                </div>
 
                     
                         <button type = "submit" class = "btn btn-primary">Update Formula</button>

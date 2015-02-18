@@ -34,7 +34,7 @@ router.get('/view/:formulaId', function(req, res) {
 router.get('/make', userz.verify, function(req, res) {
 	structs.Subject.find().exec(function(err, result) {
 		res.render('formula/make', {
-			title: 'Make Formula', 
+			title: 'Make Formula',
 			subjects: result,
 			solver: '',
 			formula: '',
@@ -66,7 +66,7 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 		if (err || !result || (req.session.user.addedFormulas && req.session.user.addedFormulas.indexOf(req.params.formulaId) > 0)) {
 			res.setHeader('Content-Type', 'application/json');
 			res.send(JSONError);
-		}
+		\m gvds aenh
 		else {
 			userz.User.findByIdAndUpdate(req.session.user._id, {
 				$addToSet: {
@@ -75,7 +75,6 @@ router.post('/profile/add/:formulaId', userz.verify, function(req, res) {
 			}).exec(function(err, success) {
 				res.setHeader('Content-Type', 'application/json');
 				res.send(JSONSuccess);
-
 			});
 		}
 	});
@@ -106,7 +105,7 @@ router.post('/create', userz.verify, function(req, res) {
 				structs.Subject.findOneAndUpdate({name: subjects}, {
 					$addToSet: {formulas: ObjectId(result.id)},
 				}).exec(function(err, numModified) {
-					if (err) {console.log(err);} 
+					if (err) {console.log(err);}
 					else {console.log("Success " + numModified);}
 				});
 			}
@@ -116,12 +115,12 @@ router.post('/create', userz.verify, function(req, res) {
 					structs.Subject.findOneAndUpdate({name: subjects[i]}, {
 						$push: {formulas: result.id},
 					}).exec(function(err, numModified) {
-						if (err) {console.log(err);} 
+						if (err) {console.log(err);}
 						else {console.log("Success " + numModified);}
 					});
 				}
 			}
-			res.redirect('/formula/view/' + result.id.toString());
+			res.redirect('/formula/display/' + result.id.toString());
 		}
 	});
 });
@@ -148,7 +147,7 @@ router.get('/edit/:formulaId', userz.verify, function(req, res) {
 	structs.Formula.findById(req.params.formulaId, function(err, formula) {
 		structs.Subject.find().exec(function(err, result) {
 			res.render('formula/update', {
-				title: 'Make Formula', 
+				title: 'Make Formula',
 				formulaId: req.params.formulaId,
 				subjects: result,
 				solver: formula.solver || '',
@@ -167,7 +166,7 @@ router.get('/edit/:formulaId', userz.verify, function(req, res) {
 
 router.post('/update/:formulaId', userz.verify, function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	structs.Formula.update({_id: ObjectId(req.params.formulaId)}, { 
+	structs.Formula.update({_id: ObjectId(req.params.formulaId)}, {
 		$set: {
 			formula: req.body.formula,
 			title: req.body.title,

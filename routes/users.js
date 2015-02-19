@@ -17,13 +17,13 @@ function pbd(password, salt, iterations, callback) {
    	callback(password.toString(CryptoJS.enc.Base64));
    }
    else {
-   	 for (var i = 0; i < 500; i++) {
+   	 for (var j = 0; j < 500; j++) {
    	 	password = CryptoJS.SHA3(password + salt,
    	 		{outputLength: 384});
    	 }
    	 process.nextTick(function(err) {
    	 	pbd(password, salt, iterations - 500, callback);
-   	 })
+   	 });
    }
 }
 
@@ -31,7 +31,7 @@ router.get('/this', function(req, res) {
 	if (!req.query.salt)
 		res.send(genSalt().toString(CryptoJS.enc.Base64));
 	else {
-		var pw = req.query.password || "password"
+		var pw = req.query.password || "password";
 		pbd(pw, req.query.salt, 10000, function(result) {
 			res.send("PBD" + result);
 		});
@@ -49,13 +49,14 @@ router.get('/createadmin', function(req, res) {
 				firstname: 'Admin',
 				lastname: 'User',
 				email: 'admin',
+				username: 'admin',
 				hash: 'GZQSxHhcqdcS/f3gLpsfViuNCW+q67Z1VH94eJxHVDo1L0E1pYhfNaaSxi8gxXtT',
 				salt: 'cOetkE8+k4svlnCEQxvVtUxKV/a28YTmK4/fqJQWyYM=',
 				isAdmin: true
 			});
 			admin.save(function(err) {
 				if (err)
-					req.flash("error in creation")
+					req.flash("error in creation");
 				else
 					req.flash("success", "Admin created");
 				res.redirect("/");
@@ -69,7 +70,14 @@ router.get('/createadmin', function(req, res) {
 });
 
 router.get('/signup', function(req, res) {
-	res.render('users/signup', {title: 'Sign Up', robo: true});
+	params = {
+		firstname: req.query.firstname || '',
+		lastname: req.query.lastname || '',
+		email: req.query.email || '',
+		username: req.query.username || '',
+		title: 'Sign Up'
+	};
+	res.render('users/signup', params);
 });
 
 router.post('/new', function(req, res) {
@@ -101,9 +109,28 @@ router.post('/session/new', function(req, res) {
 
 router.get('/welcome', userz.verify, function(req, res) {
 	structs.Category.find().populate('subjects').exec(function(err, result) {
-		console.log()
 		res.render('users/welcome', {title: 'Welcome!', headerImage: '/images/mojave.jpg', categories: result});
 	});
+});
+
+router.get('/migrateusers', userz.verifyAdmin, function(req, res) {
+	userz.User.find().exec(function(err, users) {
+		users.forEach(function(user) {
+			if (!user.isAdmin && user.username.indexOf("DEFAULT") === 0) {
+				if (user.username.length == 7) {
+					userz.User.findByIdAndUpdate(user.id, {
+						$set: {username: user.username + user.id}
+					}).exec(function(err, user) {
+						if (err) {
+							console.log(err);
+						}
+					});
+				}
+			}
+		});
+	});
+	req.flash('success', 'Users have been migrated');
+	res.redirect('/sessions/welcome');
 });
 
 router.get('/logout', function(req, res) {

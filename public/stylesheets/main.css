@@ -1,89 +1,74 @@
 .minipage {
-	width: 75%;
-	margin-top: 6em;
-	margin-bottom: 4em;
-	padding: 2em;
-	/*background: #e8e8fb;*/
+    width: 75%;
+    margin-top: 6em;
+    margin-bottom: 4em;
+    padding: 2em;
+    /*background: #e8e8fb;*/
 }
-
 .invisible {
-	display: hidden;
+    display: hidden;
 }
-
 .green {
-	color: rgba(17, 152, 80, 1);
+    color: rgba(17, 152, 80, 1);
 }
-
 .red {
-	color: rgba(172, 15, 15, 1);
+    color: rgba(172, 15, 15, 1);
 }
-
 p#equation {
-	color: #0077bb;
-	display: block;
-	font-size: 1.4em;
-	margin: 2em;
-	background: #f3fbfb;
-	padding: .5em 2em;
-	border-radius: 12px;
+    color: #0077bb;
+    display: block;
+    font-size: 1.4em;
+    margin: 2em;
+    background: #f3fbfb;
+    padding: .5em 2em;
+    border-radius: 12px;
 }
-
 p#equationSmaller {
-	color: #0077bb;
-	display: block;
-	font-size: 1em;
-	margin: 2em;
-	background: #f3fbfb;
-	padding: .5em 2em;
-	border-radius: 12px;
+    color: #0077bb;
+    display: block;
+    font-size: 1em;
+    margin: 2em;
+    background: #f3fbfb;
+    padding: .5em 2em;
+    border-radius: 12px;
 }
-
-h2.especial {
-
+h2.especial {} a.esp {
+    display: block;
+    border: 1px solid #d2af00;
+    margin: 0px;
+    padding: 8px 1em;
+    width: 100%;
+    background: #f1c40f;
+    font-size: 1.25em;
+    text-align: center;
 }
-
-a.esp {
-	display: block;
-	border: 1px solid #d2af00;
-	margin: 0px;
-	padding: 8px 1em;
-	width: 100%;
-	background: #f1c40f;
-	font-size: 1.25em;
-	text-align:center;
-}
-
 a.esp:hover {
-	text-decoration: none;
-	background: #f4d422;
+    text-decoration: none;
+    background: #f4d422;
 }
-
 a.esp2 {
-	display: block;
-	margin: 0px;
-	padding: 8px 1em;
-	width: 100%;
-	background: #00dd00;
-	font-size: 1.25em;
-	text-align:center;
+    display: block;
+    margin: 0px;
+    padding: 8px 1em;
+    width: 100%;
+    background: #00dd00;
+    font-size: 1.25em;
+    text-align: center;
 }
-
 a.esp2:hover {
-	text-decoration: none;
-	background: #22ff22;
+    text-decoration: none;
+    background: #22ff22;
 }
-
 a.esp3 {
-	display: block;
-	margin: 0px;
-	padding: 8px 1em;
-	width: 100%;
-	background: #dd0000;
-	font-size: 1.25em;
-	text-align:center;
+    display: block;
+    margin: 0px;
+    padding: 8px 1em;
+    width: 100%;
+    background: #dd0000;
+    font-size: 1.25em;
+    text-align: center;
 }
-
 a.esp2:hover {
-	text-decoration: none;
-	background: #ff2222;
+    text-decoration: none;
+    background: #ff2222;
 }

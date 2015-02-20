@@ -1,35 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <title>Principia | Group Page</title>
-        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
-		<meta charset = "utf-8">
-		<link rel = "stylesheet" type = "text/css" href =  "/stylesheets/bootstrap.css">
-	</head>
-	<body  style = "background-color:#42647f">
-        <br>
-        <br>
-		<div class = "container-fluid">
-			<nav class = "navbar navbar-fixed-top" style = "background-color:#f1c40f">
-                <div>
-                    <ul class = "nav navbar-nav" style="font-weight:bold;font-color:#00f">
-                        <li><a href = "/">Home</a></li>
-                        <li><a href = "/sessions/welcome">Start</a></li>
-                        <% if (!loggedIn) { %>
-                            <li><a href = "/sessions/login">Login</a></li>
-                            <li><a href = "/sessions/signup">Sign Up</a></li>
+
+<head>
+    <title>Principia | Group Page</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+</head>
+
+<body style="background-color:#42647f">
+    <br>
+    <br>
+    <div class="container-fluid">
+        <nav class="navbar navbar-fixed-top" style="background-color:#f1c40f">
+            <div>
+                <ul class="nav navbar-nav" style="font-weight:bold;font-color:#00f">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li><a href="/sessions/welcome">Start</a>
+                    </li>
+                    <% if (!loggedIn) { %>
+                        <li><a href="/sessions/login">Login</a>
+                        </li>
+                        <li><a href="/sessions/signup">Sign Up</a>
+                        </li>
                         <% } else { %>
-                            <li><a href = "/sessions/logout">Log Out</a></li>
-                            <li><a href = "/profile"><b><%=user.firstname%></b></a></li>
-                            <li><a href = "/formula/make"><b>Make Formula</b></a></li>
-                        <% } %>
-                        <li><a href = "/formula/">All Formulas</a></li>
-                    </ul>
-                </div>
-            </nav>
-			<br>
-			<br>
-			<!-- TODO -->
-		</div>
-	</body>
+                            <li><a href="/sessions/logout">Log Out</a>
+                            </li>
+                            <li><a href="/profile"><b><%=user.firstname%></b></a>
+                            </li>
+                            <li><a href="/formula/make"><b>Make Formula</b></a>
+                            </li>
+                            <% } %>
+                                <li><a href="/formula/">All Formulas</a>
+                                </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <!-- TODO -->
+    </div>
+</body>
+
 </html>

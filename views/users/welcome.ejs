@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Principia | Start</title>
-        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
-        <meta charset = "utf-8">
-		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
-		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
-	</head>
-    <body style = "background-color:#42647f">
-		<div class="container-fluid">
-            <% include ../partials/navbar %>
-			<div id = "welcome-info" style="margin-top:6em"></div>
-			<div class = "row">
-                <div class = "col-md-2"></div>
-                <div class = "col-md-8" style = "background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
-                    <div class = "page-header">
+
+<head>
+    <title>Principia | Start</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+
+<body style="background-color:#42647f">
+    <div class="container-fluid">
+        <% include ../partials/navbar %>
+            <div id="welcome-info" style="margin-top:6em"></div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
+                    <div class="page-header">
                         <h1>Welcome</h1>
                     </div>
                     <% include ../partials/flash %>
-                    <p>We would like to welcome you, <b><%= user.firstname %></b> to our website. Feel free to browse our extensive collection of articles, formulas, and study guides.</p>
-                    <br>
-                    <div class = "row" >
-                        <div class="col-md-4"></div>
-                        <div class = "col-md-4">
-                            <a class = "esp" href = "/formula">View Our Equations Database</a>
-                            <a class = "esp" href = "/profile">My Profile</a>
-                            <a class = "esp" href = "/profile">My List</a>
+                        <p>We would like to welcome you, <b><%= user.firstname %></b> to our website. Feel free to browse our extensive collection of articles, formulas, and study guides.</p>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <a class="esp" href="/formula">View Our Equations Database</a>
+                                <a class="esp" href="/profile">My Profile</a>
+                                <a class="esp" href="/profile">My List</a>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="col-md-12">
+                                <% for (var i=0 ; i < categories.length; i++) { %>
+                                    <div class="col-md-6" style="">
+                                        <div class="page-header" style="text-align:center">
+                                            <h2>
+                                                <%=c ategories[i].name %>
+                                            </h2>
+                                        </div>
+                                        <% for (var j=0 ; j < categories[i].subjects.length; j++) { %>
+                                            <a class="esp" href="/formula/subject/<%= categories[i].subjects[j].name %>">
+                                                <%=c ategories[i].subjects[j].name %>
+                                            </a>
+                                            <% } %>
+                                                <br>
+                                                <br>
+                                    </div>
+                                    <% } %>
+                                        <br>
+                                        <br>
+                            </div>
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <div class = "col-md-12">
-                    <% for (var i = 0; i < categories.length; i++) { %>
-                        <div class="col-md-6" style = "">
-                            <div class = "page-header" style="text-align:center"><h2><%= categories[i].name %></h2></div>
-                            <% for (var j = 0; j < categories[i].subjects.length; j++) { %>
-                                    <a class= "esp" href="/formula/subject/<%= categories[i].subjects[j].name %>"><%= categories[i].subjects[j].name %></a>
-                            <% } %>
-                            <br><br>
-                        </div>
-                    <% } %>
-                    <br>
-                    <br>
-                </div>
-                    </div>
                 </div>
                 <div class="col-md-2"></div>
             </div>
             <br>
             <br>
             <br>
-		</div>
-    </body>
+    </div>
+</body>
+
 </html>

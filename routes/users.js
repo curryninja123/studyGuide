@@ -3,7 +3,7 @@ var router = express.Router();
 var userz = require('../models/userz.js');
 var structs = require('../models/structs.js');
 var CryptoJS = require('crypto-js');
-var querystring=  require('querystring');
+var querystring = require('querystring');
 
 function genSalt() {
     return CryptoJS.lib.WordArray.random(256 / 8);
@@ -153,10 +153,10 @@ router.get('/fixusername', userz.verify, function(req, res) {
         req.flash('error', 'Your username cannot be changed');
         res.redirect('/');
     } else {
-		params = {
-			title: 'Modify Username',
-			username: req.query.username || ''
-		}
+        params = {
+            title: 'Modify Username',
+            username: req.query.username || ''
+        }
         res.render('users/fixusername', params);
     }
 });
@@ -171,27 +171,34 @@ router.post('/fixusername', userz.verify, function(req, res) {
             wasError = true;
             req.flash('error', 'Username must be at least six characters');
         }
-		userz.User.where({username: req.body.username}).count(function(err, count) {
-			if (count >= 1) {
-				wasError = true;
-				req.flash('error', 'Username is not unique');
-			}
-			if (wasError) {
-				res.redirect('/sessions/fixusername?' + querystring.stringify({username: req.body.username}));
-			}
-			else {
-				console.log(req.body.username);
-				userz.User.findOneAndUpdate({email: req.session.user.email}, {
-					$set: {username: req.body.username}
-				}).exec(function(err, user) {
-					console.log(user);
-					req.session.user = user;
-					res.locals.user = user;
-					req.flash('success', 'You have changed your username');
-					res.redirect('/sessions/welcome');
-				});
-			}
-		});
+        userz.User.where({
+            username: req.body.username
+        }).count(function(err, count) {
+            if (count >= 1) {
+                wasError = true;
+                req.flash('error', 'Username is not unique');
+            }
+            if (wasError) {
+                res.redirect('/sessions/fixusername?' + querystring.stringify({
+                    username: req.body.username
+                }));
+            } else {
+                console.log(req.body.username);
+                userz.User.findOneAndUpdate({
+                    email: req.session.user.email
+                }, {
+                    $set: {
+                        username: req.body.username
+                    }
+                }).exec(function(err, user) {
+                    console.log(user);
+                    req.session.user = user;
+                    res.locals.user = user;
+                    req.flash('success', 'You have changed your username');
+                    res.redirect('/sessions/welcome');
+                });
+            }
+        });
     }
 });
 

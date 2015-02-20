@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Principia | Profile</title>
-        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
-        <meta charset = "utf-8">
-        <link rel = "stylesheet" type = "text/css" href="/stylesheets/bootstrap.css">
-    </head>
-    <body>
-        <div class="container-fluid">
-            <% include ../partials/navbar %>
+
+<head>
+    <title>Principia | Profile</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <% include ../partials/navbar %>
             <br>
             <br>
-            <div class = "row">
-                <div class = "col-md-2"></div>
-                <div class = "col-md-8">
-                    <div class = "page-header"><h1><%= user.firstname %> <%= user.lastname %></h1></div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="page-header">
+                        <h1>
+                            <%=u ser.firstname %>
+                                <%=u ser.lastname %>
+                        </h1>
+                    </div>
                 </div>
-                <div class = "col-md-2"></div>
+                <div class="col-md-2"></div>
             </div>
-            <div class = "row">
-                <div class = "col-md-2"></div>
-                <div class = "col-md-8">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <p>
-                        <b>Email: </b><%= user.email %>
+                        <b>Email: </b>
+                        <%=u ser.email %>
                     </p>
                     <% if (changeAvailable) { %>
                         <p><b>Username: </b>default</p>
-                        <p><%- link_to('Select Username', '/sessions/fixusername') %></p>
-                    <% } else { %>
-                        <p><b>Username: </b><%= user.username %></p>
-                    <% } %>
-                    <div class="page-header"><h3>My Formulas</h3></div>
-                    <br>
-                    <% for (var i = 0; i < user.addedFormulas.length; i++) { %>
-                        <a href="/formula/display/<%= user.addedFormulas[i].id %>"><%= user.addedFormulas[i].title %></a>
-                        <br>
-                        <br>
-                    <% } %>
+                        <p>
+                            <%- link_to( 'Select Username', '/sessions/fixusername') %>
+                        </p>
+                        <% } else { %>
+                            <p><b>Username: </b>
+                                <%=u ser.username %>
+                            </p>
+                            <% } %>
+                                <div class="page-header">
+                                    <h3>My Formulas</h3>
+                                </div>
+                                <br>
+                                <% for (var i=0 ; i < user.addedFormulas.length; i++) { %>
+                                    <a href="/formula/display/<%= user.addedFormulas[i].id %>">
+                                        <%=u ser.addedFormulas[i].title %>
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <% } %>
                 </div>
-                <div class = "col-md-2"></div>
+                <div class="col-md-2"></div>
             </div>
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>

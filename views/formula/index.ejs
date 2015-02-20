@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Principia | Formula Index</title>
-        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
-        <meta charset = "utf-8">
-        <link rel = "stylesheet" type = "text/css" href =  "/stylesheets/bootstrap.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <link rel = "stylesheet" type = "text/css" href = "/stylesheets/bluebox.css">
-        <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
-    </head>
-    <body>
-        <br>
-        <br>
-        <div class = "container-fluid">
-            <% include ../partials/navbar %>
+
+<head>
+    <title>Principia | Formula Index</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bluebox.css">
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+
+<body>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <% include ../partials/navbar %>
             <br>
-            <br>  
+            <br>
             <div class="row" style="text-align:center;">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <div class="bord">
-                        <div class="jumbotron" style = "background-color:#ecf0f1">
+                        <div class="jumbotron" style="background-color:#ecf0f1">
                             <h1>Formula Listing</h1>
-                                <% if (formulas) { %>
-                                    <% if (!formulas.hasOwnProperty('length')) { formulas = [formulas]; } %>
-                                    <% for (var i = 0; i < formulas.length; i++) { %>
-                                        <h3><a href='/formula/display/<%= formulas[i].id %>'>
-                                            <%= formulas[i].title %>
-                                        </a></h3>
-                                        <p> \[<%= formulas[i].formula %>\] </p>
-                                    <% } %>
-                                <% } %>
+                            <% if (formulas) { %>
+                                <% if (!formulas.hasOwnProperty( 'length')) { formulas=[ formulas]; } %>
+                                    <% for (var i=0 ; i < formulas.length; i++) { %>
+                                        <h3>
+                                            <a href='/formula/display/<%= formulas[i].id %>'>
+                                                <%=f ormulas[i].title %>
+                                            </a>
+                                        </h3>
+                                        <p> \[
+                                            <%=f ormulas[i].formula %>\] </p>
+                                        <% } %>
+                                            <% } %>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
             </div>
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>

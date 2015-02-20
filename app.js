@@ -35,7 +35,7 @@ app.use(session({
 // flash
 var flash = require('connect-flash');
 app.use(flash());
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
     res.locals.success_messages = req.flash('success') || [];
     res.locals.error_messages = req.flash('error') || [];
     next();
@@ -66,19 +66,19 @@ if (app.get('env') === 'development') {
         res.render('error', {
             message: err.message,
             error: err,
-            status : err.status || 500
+            status: err.status || 500
         });
     });
 }
 
-var mongoose = require( 'mongoose' );
+var mongoose = require('mongoose');
 var dbURI = settings.dbURI;
 mongoose.connect(dbURI);
-mongoose.connection.on('connected', function () {
-  console.log('Mongoose default connection open to ' + dbURI);
+mongoose.connection.on('connected', function() {
+    console.log('Mongoose default connection open to ' + dbURI);
 });
-mongoose.connection.on('error',function (err) {
-  console.log('Mongoose default connection error: ' + err);
+mongoose.connection.on('error', function(err) {
+    console.log('Mongoose default connection error: ' + err);
 });
 
 // production error handler

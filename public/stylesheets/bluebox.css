@@ -1,9 +1,9 @@
 body {
     background-color: #42647F;
 }
-div.bord{
-    border-width:9px;
-    border-style:solid;
-    border-color:#34495e;
-    background-color:#ecf0f1;
+div.bord {
+    border-width: 9px;
+    border-style: solid;
+    border-color: #34495e;
+    background-color: #ecf0f1;
 }

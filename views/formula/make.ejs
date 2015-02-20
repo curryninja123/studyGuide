@@ -1,69 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Principia | Create a Formula</title>
-        <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
-        <meta charset = "utf-8">
-		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/bootstrap.css">
-		<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main.css">
-		<script src="/javascripts/display.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
-	</head>
-	<body>
-		<div class = "container-fluid">
-            <% include ../partials/navbar %>
-			<div style="margin-top: 6em"></div>
-               <form method="post" action="/formula/create">
-                        <div class ="form-group">
-                            <label for = "title">Title</label>
-                            <input type = "text" class = "form-control" value="<%= title || '' %>" id = "title" name = "title" placeholder = "Formula Title">
-                        </div>
-                        <div class ="form-group">
-                            <label for = "title">Formula Content</label>
-                            <input type = "text" class = "form-control" value="<%= formula || '' %>" id = "formula" name = "formula" placeholder = "Enter Formula (LaTeX supported)">
-                        </div>
-                        <div class ="form-group">
-                            <label for = "variableDefinitions">Variable Definitions</label>
-                            <textarea class = "form-control" value="<%= variableDefinitions || '' %>" id = "variableDefinitions" name = "variableDefinitions" rows="10"><%= variableDefinitions || '' %></textarea>
-                        </div>
-						<div class ="form-group">
-                            <label for = "examples">Examples</label>
-                            <textarea class = "form-control" value="<%= examples || '' %>" id = "examples" name = "examples" rows="10"><%= examples || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "proofs">Proofs</label>
-                            <textarea class = "form-control" value="<%= proofs || '' %>" id = "proofs" name = "proofs" rows="10"><%= proofs || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "history">History</label>
-                            <textarea class = "form-control" value="<%= history || '' %>" id = "history" name = "history" rows="10"><%= history || '' %></textarea>
-                        </div>
-                        <div class ="form-group">
-                            <label for = "practice">Practice</label>
-                            <textarea class = "form-control" value="<%= practice || '' %>" id = "practice" name = "practice" rows="10"><%= practice || '' %></textarea>
-                        </div>
-                         <div class ="form-group">
-                            <label for = "solver">Solver</label>
-                            <textarea class = "form-control" value="<%= solver || '' %>" id = "solver" name = "solver" rows="10"><%= solver || '' %></textarea>
-                        </div>
-                       	
-                       	<div class="form-group">
-                       	<label for="subjects">Subjects</label>
-                        <% for (var i = 0; i < subjects.length; i++) { %>
-	                        <div class="checkbox">
-	                        	<label>
-									<input type="checkbox" name="subjects" value="<%= subjects[i].name %>">
-									<%= subjects[i].name %>
-	                        	</label>
-                        	</div>
-                        <% } %>
-                        </div>
 
-                        <button type = "submit" class = "btn btn-primary">Create Formula</button>
-				</form>
-			</div>
-			<br/><br/>
-		</div>
-	</body>
+<head>
+    <title>Principia | Create a Formula</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="/javascripts/display.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <% include ../partials/navbar %>
+            <div style="margin-top: 6em"></div>
+            <form method="post" action="/formula/create">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" value="<%= title || '' %>" id="title" name="title" placeholder="Formula Title">
+                </div>
+                <div class="form-group">
+                    <label for="title">Formula Content</label>
+                    <input type="text" class="form-control" value="<%= formula || '' %>" id="formula" name="formula" placeholder="Enter Formula (LaTeX supported)">
+                </div>
+                <div class="form-group">
+                    <label for="variableDefinitions">Variable Definitions</label>
+                    <textarea class="form-control" value="<%= variableDefinitions || '' %>" id="variableDefinitions" name="variableDefinitions" rows="10">
+                        <%=v ariableDefinitions || '' %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="examples">Examples</label>
+                    <textarea class="form-control" value="<%= examples || '' %>" id="examples" name="examples" rows="10">
+                        <%=e xamples || '' %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="proofs">Proofs</label>
+                    <textarea class="form-control" value="<%= proofs || '' %>" id="proofs" name="proofs" rows="10">
+                        <%=p roofs || '' %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="history">History</label>
+                    <textarea class="form-control" value="<%= history || '' %>" id="history" name="history" rows="10">
+                        <%=h istory || '' %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="practice">Practice</label>
+                    <textarea class="form-control" value="<%= practice || '' %>" id="practice" name="practice" rows="10">
+                        <%=p ractice || '' %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="solver">Solver</label>
+                    <textarea class="form-control" value="<%= solver || '' %>" id="solver" name="solver" rows="10">
+                        <%=s olver || '' %>
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="subjects">Subjects</label>
+                    <% for (var i=0 ; i < subjects.length; i++) { %>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="subjects" value="<%= subjects[i].name %>">
+                                <%=s ubjects[i].name %>
+                            </label>
+                        </div>
+                        <% } %>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Formula</button>
+            </form>
+    </div>
+    <br/>
+    <br/>
+    </div>
+</body>
+
 </html>

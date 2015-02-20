@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Principia | Sign Up</title>
+    <link rel="icon" type="image/png" href="http://puu.sh/fWjsh/60319965f4.png">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/javascripts/signup.js"></script>
+</head>
+
+<body style="background-color:#42647f">
+    <div class="container-fluid">
+        <% include ../partials/navbar %>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8" style="background-color:#F4FFE9;border-radius:4px;border-style:solid;border-color:#34495e;border-width:9px;">
+                    <div class="page-header">
+                        <h1>Add Username</h1>
+                    </div>
+                    <div class="alert alert-danger">
+                        Warning! Once you select a username, it cannot be modified. If you do not wish
+                        to choose a username at this time, please press the back button in your browser.
+                    </div>
+                    <% include ../partials/flash %>
+                        <form method="post" action="/sessions/fixusername">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" value="<%= username %>" class="form-control" id="username" name="username" placeholder="Enter your email address here">
+                                <div class="alert invisible" id="userinfo"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                            <br>
+                            <br>
+                        </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+    </div>
+</body>
+
+</html>

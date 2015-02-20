@@ -6,6 +6,18 @@
 	/*background: #e8e8fb;*/
 }
 
+.invisible {
+	display: hidden;
+}
+
+.green {
+	color: rgba(17, 152, 80, 1);
+}
+
+.red {
+	color: rgba(172, 15, 15, 1);
+}
+
 p#equation {
 	color: #0077bb;
 	display: block;

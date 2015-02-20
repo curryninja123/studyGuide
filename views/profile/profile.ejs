@@ -24,6 +24,12 @@
                     <p>
                         <b>Email: </b><%= user.email %>
                     </p>
+                    <% if (changeAvailable) { %>
+                        <p><b>Username: </b>default</p>
+                        <p><%- link_to('Select Username', '/sessions/fixusername') %></p>
+                    <% } else { %>
+                        <p><b>Username: </b><%= user.username %></p>
+                    <% } %>
                     <div class="page-header"><h3>My Formulas</h3></div>
                     <br>
                     <% for (var i = 0; i < user.addedFormulas.length; i++) { %>

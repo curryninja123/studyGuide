@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var CryptoJS = require('crypto-js');
+var querystring = require('querystring');
 
 function genSalt() {
     return CryptoJS.lib.WordArray.random(256 / 8);
@@ -118,6 +119,10 @@ exports.register = function(req, res, options) {
         wasError = true;
         req.flash('error', 'Invalid Email');
     }
+	if (!params.username || params.username.length < 6) {
+		wasError = true;
+		req.flash('error', 'Username must be at least six characters');
+	}
     if (!passwordRegex.test(params.password)) {
         wasError = true;
         req.flash('error', 'Password invalid or too weak. ' +
